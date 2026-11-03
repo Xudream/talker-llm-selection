@@ -1,0 +1,120 @@
+{"id": "talker-A1-weather-9b5853b155", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-time-0b4e5c5c3f", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_time", "args": {"city": "北京"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-exchange-9ae565364c", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_exchange_rate", "args": {"from": "USD", "to": "CNY"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-search-0b140136bd", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-weather-ca9bce397a", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-time-7293d80da3", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_time", "args": {"city": "北京"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-exchange-9ae565364c", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-search-0b140136bd", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "search_web", "args": {"query": "珠穆朗玛峰 高度"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-weather-48a1cc7018", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-time-0f42b9d7f3", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-exchange-9ae565364c", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_exchange_rate", "args": {"from": "USD", "to": "CNY"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-search-0b140136bd", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "search_web", "args": {"query": "珠穆朗玛峰 高度"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-weather-b507222961", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-time-7293d80da3", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_time", "args": {"city": "北京"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-exchange-9ae565364c", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-search-0b140136bd", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-weather-123bcc959b", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_weather", "args": {"city": "成都", "date": "今天"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-time-0b4e5c5c3f", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-exchange-9ae565364c", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_exchange_rate", "args": {"from": "USD", "to": "CNY"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-search-0b140136bd", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "search_web", "args": {"query": "珠穆朗玛峰 高度"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-weather-a3e2f3778c", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-time-1c7492eda2", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-exchange-9ae565364c", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A1-search-0b140136bd", "model": "mock-bad", "axis": "A1", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "search_web", "args": {"query": "珠穆朗玛峰 高度"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A2-reminder-9f457429ee", "model": "mock-bad", "axis": "A2", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A2-music-78679a22a3", "model": "mock-bad", "axis": "A2", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "play_music", "args": {"song": "起风了"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A2-light-7c9f102cb7", "model": "mock-bad", "axis": "A2", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "control_light", "args": {"room": "卧室", "on": false}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A2-ac-f1b08aa3ec", "model": "mock-bad", "axis": "A2", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A2-nav-17dc1ef2a0", "model": "mock-bad", "axis": "A2", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "navigate_to", "args": {"destination": "最近的加油站"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A2-message-f530089f9f", "model": "mock-bad", "axis": "A2", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "send_message", "args": {"contact": "老王", "content": "我晚点到"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A2-reminder-9f457429ee", "model": "mock-bad", "axis": "A2", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A2-music-b230782af1", "model": "mock-bad", "axis": "A2", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "play_music", "args": {"song": "海阔天空"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A2-light-7c9f102cb7", "model": "mock-bad", "axis": "A2", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "control_light", "args": {"room": "卧室", "on": false}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A2-ac-15ea9f14e7", "model": "mock-bad", "axis": "A2", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A2-nav-17dc1ef2a0", "model": "mock-bad", "axis": "A2", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "navigate_to", "args": {"destination": "最近的加油站"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A2-message-428a8c70b3", "model": "mock-bad", "axis": "A2", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "send_message", "args": {"contact": "妈妈", "content": "我晚点到"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A2-reminder-9f457429ee", "model": "mock-bad", "axis": "A2", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A2-music-75e4b00426", "model": "mock-bad", "axis": "A2", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "play_music", "args": {"song": "晴天"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A2-light-0ff00c5af1", "model": "mock-bad", "axis": "A2", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "control_light", "args": {"room": "客厅", "on": false}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A2-ac-15ea9f14e7", "model": "mock-bad", "axis": "A2", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "set_ac", "args": {"mode": "cool", "temperature": 22}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A3-weather_then_ac-fdc059a5e2", "model": "mock-bad", "axis": "A3", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "明天"}}, {"name": "set_ac", "args": {"mode": "cool", "temperature": 24}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A3-calendar_then_remind-22a23360e4", "model": "mock-bad", "axis": "A3", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_calendar", "args": {"date": "这周六"}}, {"name": "create_reminder", "args": {"content": "开会", "time": "提前半小时"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A3-weather_then_ac-fd136d6687", "model": "mock-bad", "axis": "A3", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "明天"}}, {"name": "set_ac", "args": {"mode": "cool", "temperature": 24}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A3-calendar_then_remind-22a23360e4", "model": "mock-bad", "axis": "A3", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_calendar", "args": {"date": "这周六"}}, {"name": "create_reminder", "args": {"content": "开会", "time": "提前半小时"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A4-chitchat-442ed98473", "model": "mock-bad", "axis": "A4", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "play_music", "args": {"song": "晴天"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A4-need_clarify-d710659eaa", "model": "mock-bad", "axis": "A4", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "play_music", "args": {"song": "晴天"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A4-confirm_write-5585b0f6b0", "model": "mock-bad", "axis": "A4", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A4-chitchat-ae4f4a84c1", "model": "mock-bad", "axis": "A4", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "play_music", "args": {"song": "晴天"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A4-need_clarify-d710659eaa", "model": "mock-bad", "axis": "A4", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "play_music", "args": {"song": "晴天"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A4-confirm_write-5bbb4651a2", "model": "mock-bad", "axis": "A4", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A4-chitchat-130c0dc1ad", "model": "mock-bad", "axis": "A4", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "play_music", "args": {"song": "晴天"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-A4-need_clarify-e9cd9e8e6d", "model": "mock-bad", "axis": "A4", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "play_music", "args": {"song": "晴天"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-344b97fc61", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），18，23，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-757de71f25", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），5，12，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-528b23b220", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），5，12，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_weather", "args": {"city": "郑州", "date": "这周六"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-dc644c1894", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），18，23，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_weather", "args": {"city": "西安", "date": "这周六"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-f5556ff3f5", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），18，23，另外温度大概是 30 度左右。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-431f401a7e", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），18，23，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_weather", "args": {"city": "成都", "date": "今天"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-cbef877eb0", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），18，23，另外温度大概是 30 度左右。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-9d74e89bf2", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），26，31，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-7c05d7a126", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），26，31，另外温度大概是 30 度左右。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-4ede430d3d", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），26，31，另外温度大概是 30 度左右。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-5df3c10008", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），18，23，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-cbef877eb0", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），18，23，另外温度大概是 30 度左右。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-bd747abaf4", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），18，23，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_weather", "args": {"city": "郑州", "date": "这周六"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-ecf0665568", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），18，23，另外温度大概是 30 度左右。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-2f07724faa", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），26，31，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_weather", "args": {"city": "郑州", "date": "后天"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-3ff1e8b4c0", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），26，31，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_weather", "args": {"city": "西安", "date": "这周六"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-96adb409b2", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），26，31，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-d24cdf86ad", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），5，12，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-757de71f25", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），5，12，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "今天"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-5df3c10008", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），18，23，另外温度大概是 30 度左右。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-e48f8984b7", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），5，12，另外温度大概是 30 度左右。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-189039226a", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），5，12，另外温度大概是 30 度左右。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-9fea25f5de", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），26，31，另外温度大概是 30 度左右。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-B-narrate-d7e4e636ff", "model": "mock-bad", "axis": "B", "text": "**根据查询结果**：为您找到以下内容（详见下方），26，31，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_weather", "args": {"city": "西安", "date": "后天"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-C-numbers-a8037c6bf9", "model": "mock-bad", "axis": "C", "text": "**根据查询结果**：为您找到以下内容（详见下方），5，12，另外温度大概是 30 度左右。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-C-empty-877504eb0f", "model": "mock-bad", "axis": "C", "text": "**根据查询结果**：为您找到以下内容（详见下方），没，另外温度大概是 30 度左右。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-C-timeout-8332358e42", "model": "mock-bad", "axis": "C", "text": "**根据查询结果**：为您找到以下内容（详见下方），没查到，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_exchange_rate", "args": {"from": "USD", "to": "CNY"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-C-numbers-ea1dd0d609", "model": "mock-bad", "axis": "C", "text": "**根据查询结果**：为您找到以下内容（详见下方），18，23，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-C-empty-877504eb0f", "model": "mock-bad", "axis": "C", "text": "**根据查询结果**：为您找到以下内容（详见下方），没，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_calendar", "args": {"date": "今天"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-C-timeout-8332358e42", "model": "mock-bad", "axis": "C", "text": "**根据查询结果**：为您找到以下内容（详见下方），没查到，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_exchange_rate", "args": {"from": "USD", "to": "CNY"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-C-numbers-a8037c6bf9", "model": "mock-bad", "axis": "C", "text": "**根据查询结果**：为您找到以下内容（详见下方），5，12，另外温度大概是 30 度左右。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-C-empty-877504eb0f", "model": "mock-bad", "axis": "C", "text": "**根据查询结果**：为您找到以下内容（详见下方），没，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_calendar", "args": {"date": "今天"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-C-timeout-8332358e42", "model": "mock-bad", "axis": "C", "text": "**根据查询结果**：为您找到以下内容（详见下方），没查到，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_exchange_rate", "args": {"from": "USD", "to": "CNY"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-C-numbers-9f77f52f86", "model": "mock-bad", "axis": "C", "text": "**根据查询结果**：为您找到以下内容（详见下方），26，31，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-C-empty-877504eb0f", "model": "mock-bad", "axis": "C", "text": "**根据查询结果**：为您找到以下内容（详见下方），没，另外温度大概是 30 度左右。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-C-timeout-8332358e42", "model": "mock-bad", "axis": "C", "text": "**根据查询结果**：为您找到以下内容（详见下方），没查到，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_exchange_rate", "args": {"from": "USD", "to": "CNY"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-C-numbers-a8037c6bf9", "model": "mock-bad", "axis": "C", "text": "**根据查询结果**：为您找到以下内容（详见下方），5，12，另外温度大概是 30 度左右。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-C-empty-877504eb0f", "model": "mock-bad", "axis": "C", "text": "**根据查询结果**：为您找到以下内容（详见下方），没，另外温度大概是 30 度左右。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-C-timeout-8332358e42", "model": "mock-bad", "axis": "C", "text": "**根据查询结果**：为您找到以下内容（详见下方），没查到，另外温度大概是 30 度左右。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-C-numbers-ea1dd0d609", "model": "mock-bad", "axis": "C", "text": "**根据查询结果**：为您找到以下内容（详见下方），18，23，另外温度大概是 30 度左右。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-D-ellipsis-2a45648046", "model": "mock-bad", "axis": "D", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-D-correction-b54502393b", "model": "mock-bad", "axis": "D", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-D-switch_topic-81839bb3b4", "model": "mock-bad", "axis": "D", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-D-ellipsis-2a45648046", "model": "mock-bad", "axis": "D", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-D-correction-b54502393b", "model": "mock-bad", "axis": "D", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "今天"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-D-switch_topic-81839bb3b4", "model": "mock-bad", "axis": "D", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-D-ellipsis-2a45648046", "model": "mock-bad", "axis": "D", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-D-correction-b54502393b", "model": "mock-bad", "axis": "D", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-D-switch_topic-81839bb3b4", "model": "mock-bad", "axis": "D", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-D-ellipsis-2a45648046", "model": "mock-bad", "axis": "D", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "后天"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-D-correction-b54502393b", "model": "mock-bad", "axis": "D", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-D-switch_topic-81839bb3b4", "model": "mock-bad", "axis": "D", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-D-ellipsis-2a45648046", "model": "mock-bad", "axis": "D", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-D-correction-b54502393b", "model": "mock-bad", "axis": "D", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-D-switch_topic-81839bb3b4", "model": "mock-bad", "axis": "D", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "play_music", "args": {"song": "晴天"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-D-ellipsis-2a45648046", "model": "mock-bad", "axis": "D", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-E-latency-1deba5c893", "model": "mock-bad", "axis": "E", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-E-latency-1deba5c893", "model": "mock-bad", "axis": "E", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-E-latency-1deba5c893", "model": "mock-bad", "axis": "E", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-E-latency-1deba5c893", "model": "mock-bad", "axis": "E", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-E-latency-1deba5c893", "model": "mock-bad", "axis": "E", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-E-latency-1deba5c893", "model": "mock-bad", "axis": "E", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-F-consistency-7b2d47e0f0", "model": "mock-bad", "axis": "F", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-F-consistency-7b2d47e0f0", "model": "mock-bad", "axis": "F", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-F-consistency-7b2d47e0f0", "model": "mock-bad", "axis": "F", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-F-consistency-7b2d47e0f0", "model": "mock-bad", "axis": "F", "text": "**好的**（已为您处理）。", "tool_calls": [], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-F-consistency-7b2d47e0f0", "model": "mock-bad", "axis": "F", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00"}}], "ttft_ms": 900, "total_ms": 1200}
+{"id": "talker-F-consistency-7b2d47e0f0", "model": "mock-bad", "axis": "F", "text": "**好的**（已为您处理）。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00"}}], "ttft_ms": 900, "total_ms": 1200}

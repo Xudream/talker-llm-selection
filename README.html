@@ -1,0 +1,56 @@
+<!doctype html><html lang='zh-CN'><head><meta charset='utf-8'><title>README</title><style>
+body{font-family:-apple-system,"PingFang SC","Helvetica Neue",sans-serif;max-width:1080px;margin:32px auto;padding:0 20px;line-height:1.65;color:#1f2328;background:#fff}
+h1{font-size:26px;border-bottom:2px solid #e5e7eb;padding-bottom:8px}
+h2{font-size:21px;margin-top:32px;border-left:4px solid #2563eb;padding-left:10px}
+h3{font-size:17px;margin-top:22px;color:#111827}
+h4{font-size:15px;color:#374151}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:13.5px}
+th,td{border:1px solid #d1d5db;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f3f4f6;font-weight:600}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+pre{background:#0f172a;color:#e2e8f0;padding:14px;border-radius:8px;overflow-x:auto;font-size:12.5px}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:4px solid #cbd5e1;margin:10px 0;padding:2px 14px;color:#4b5563}
+hr{border:none;border-top:1px solid #e5e7eb;margin:26px 0}
+</style></head><body><h1>talker-llm-selection</h1>
+<p>Talker 层 LLM 的选型研究：<strong>业界方案洞察 + 评测集设计 + 可跑工装</strong>。</p>
+<p>范围：闲聊、单步查询、两步闭环、多轮指代——不含复杂推理（那是 Thinker）、不含拒识（那是 L1）。</p>
+<h2>结论速览</h2>
+<table><thead><tr><th>判断</th><th>依据</th></tr></thead><tbody>
+<tr><td>端侧 4B 够&quot;能用&quot;，9B 是&quot;好用&quot;分水岭</td><td>Qwen3.5-9B BFCL-V4 66.1 / τ² 79.1（官方）；端侧三强 Qwen3-4B-2507 / Gemma 4 E4B / Phi-4-mini</td></tr>
+<tr><td><strong>查询必须走工具</strong>，不能靠参数知识</td><td>小模型在 AA-Omniscience 上幻觉率 80–82%</td></tr>
+<tr><td>LLM 首 token 只占 200–1000 ms，判停 200–800 ms 往往更贵</td><td>级联链路实测区间汇总</td></tr>
+<tr><td>口语化是独立能力，公开榜单完全不覆盖</td><td>BFCL/τ² 只判工具正确性</td></tr>
+<tr><td>选型必须按部署形态分档（端侧/边缘/云），不跨档比</td><td>三档量化与成本结构不同</td></tr>
+</tbody></table>
+<h2>文档</h2>
+<table><thead><tr><th>文件</th><th>内容</th></tr></thead><tbody>
+<tr><td><code>docs/01-业界方案洞察.md</code></td><td>三档候选池、时延预算、榜单能证明什么、业界五种模式、五条启示</td></tr>
+<tr><td><code>docs/02-Talker-LLM选型评测集.md</code></td><td>六轴设计（A 工具 35% / B 口语 20% / C 保真 15% / D 多轮 10% / E 时延 10% / F 稳定 10%）、样本量、判分规则、决策规则、成本排期</td></tr>
+<tr><td><code>docs/03-评测执行手册.md</code></td><td>三步跑通、自检、加候选、读报告、常见坑</td></tr>
+</tbody></table>
+<h2>工装</h2>
+<pre><code>
+# 生成题集：L0 120 / L1 900 / L2 3000
+python3 tools/build_taskset.py --tier L1 --out tasksets/L1.jsonl
+
+# 跑一个模型（OpenAI 兼容，原生 tool calling，记录 TTFT）
+python3 tools/run_model.py --taskset tasksets/L1.jsonl --model qwen-plus \
+  --base-url https://dashscope.aliyuncs.com/compatible-mode/v1 \
+  --out predictions/qwen-plus__L1.jsonl
+
+# 判分（六轴 + 硬门槛 + 加权 + 三态结论）
+python3 tools/score.py --taskset tasksets/L1.jsonl \
+  --pred predictions/qwen-plus__L1.jsonl --report reports/qwen-plus__L1.md
+</code></pre>
+<p>自检（不花 token）：<code>run_model.py --backend dryrun</code> 用 gold 造 oracle，应得 100 分；仓库里另带一个 <code>mockbad</code> 夹具，应被判&quot;淘汰&quot;。</p>
+<h2>与其它研究的关系</h2>
+<ul><li>继承 <code>duplex-voice/docs/L3模型选型评测方法.md</code> 的六轴与统计纪律</li><li>时延预算取自 <code>duplex-voice/docs/四层架构方案.md</code></li><li>判&quot;该不该说话&quot;不在本仓库，见 <code>sidetalk-eval</code></li><li>口语约束与 <code>duplex-voice/docs/垫词设计与评测.md</code> 同源</li></ul>
+<h2>目录</h2>
+<pre><code>
+docs/        洞察 / 评测集设计 / 执行手册
+tools/       build_taskset.py  run_model.py  score.py
+tasksets/    题集（L0/L1/L2，可重建）
+predictions/ 模型输出（含 oracle 与 mockbad 自检夹具）
+reports/     判分报告
+</code></pre></body></html>
