@@ -1,0 +1,182 @@
+<!doctype html><html lang='zh-CN'><head><meta charset='utf-8'><title>02-Talker-LLM评测体系</title><style>
+body{font-family:-apple-system,"PingFang SC","Helvetica Neue",sans-serif;max-width:1080px;margin:32px auto;padding:0 20px;line-height:1.65;color:#1f2328;background:#fff}
+h1{font-size:26px;border-bottom:2px solid #e5e7eb;padding-bottom:8px}
+h2{font-size:21px;margin-top:32px;border-left:4px solid #2563eb;padding-left:10px}
+h3{font-size:17px;margin-top:22px;color:#111827}
+h4{font-size:15px;color:#374151}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:13.5px}
+th,td{border:1px solid #d1d5db;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f3f4f6;font-weight:600}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+pre{background:#0f172a;color:#e2e8f0;padding:14px;border-radius:8px;overflow-x:auto;font-size:12.5px}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:4px solid #cbd5e1;margin:10px 0;padding:2px 14px;color:#4b5563}
+hr{border:none;border-top:1px solid #e5e7eb;margin:26px 0}
+</style></head><body><h1>Talker LLM 评测体系：尺子1（公开集）与尺子2（业务集）</h1>
+<p>&gt; 配套：《01-业界方案洞察.md》（两轨候选池）、《03-评测执行手册.md》（怎么跑）</p>
+<p>&gt; 场景：家庭音箱 + 手机助手，云侧部署</p>
+<p>&gt; 版本：v2.0　｜　日期：2026-11-03</p>
+<hr/>
+<h2>1. 两把尺子的分工</h2>
+<table><thead><tr><th></th><th>尺子1（公开集）</th><th>尺子2（业务集）</th></tr></thead><tbody>
+<tr><td>数据</td><td>BFCL v4、τ²-bench、ACEBench、IFEval、中文常识/幻觉集</td><td>自建：家庭音箱 + 手机助手真实说法</td></tr>
+<tr><td>回答什么</td><td><strong>谁不配进下一轮</strong> + <strong>上限在哪</strong></td><td><strong>谁最适合我们的业务</strong></td></tr>
+<tr><td>对象</td><td>开源轨全部候选 + 闭源 SOTA（摸高）</td><td>通过尺子1 的开源候选（2–4 个）</td></tr>
+<tr><td>决策权</td><td>淘汰 + 摸高，不做定选</td><td>定选</td></tr>
+<tr><td>成本</td><td>低（跑公开集）</td><td>高（建集 + 人工）</td></tr>
+</tbody></table>
+<p><strong>顺序</strong>：尺子1 先把&quot;明显不行&quot;和&quot;明显够不着&quot;的分开 → 尺子2 做业务定选 → 用摸高轨的分数解释&quot;差距值多少钱&quot;。</p>
+<hr/>
+<h2>2. 尺子1：公开集</h2>
+<h3>2.1 选集与用途</h3>
+<table><thead><tr><th>轴</th><th>公开集</th><th>覆盖</th><th>用法</th><th>已知局限</th></tr></thead><tbody>
+<tr><td>A 工具</td><td><strong>BFCL v4</strong>（单轮 AST / 多轮 / 并行 / 幻觉）</td><td>函数选择、参数、该不该调</td><td>主淘汰线</td><td>英文 schema 为主</td></tr>
+<tr><td>A 工具</td><td><strong>τ²-bench</strong>（retail / airline / telecom）</td><td>多轮闭环、双控（用户/系统）</td><td>两步闭环保守估计</td><td>领域是客服，不贴家居</td></tr>
+<tr><td>A 工具</td><td><strong>ACEBench</strong>（中文工具调用）</td><td>中文说法 → 工具</td><td>中文场景对照</td><td>规模小</td></tr>
+<tr><td>B 约束</td><td><strong>IFEval</strong></td><td>25 类可验证约束</td><td>格式/长度底线</td><td>不含&quot;口语化&quot;</td></tr>
+<tr><td>C 事实</td><td><strong>HaluEval 中文子集 / SimpleQA 类</strong></td><td>幻觉倾向</td><td>反向筛除</td><td>与家居事实不同分布</td></tr>
+<tr><td>C 常识</td><td><strong>CMMLU / C-Eval</strong>（抽样）</td><td>中文常识</td><td>闲聊兜底能力</td><td>与工具无关</td></tr>
+<tr><td>D 多轮</td><td>BFCL multi-turn + τ²</td><td>指代与槽位继承</td><td>组合判断</td><td>无&quot;设备上下文&quot;</td></tr>
+<tr><td>E 时延</td><td>BFCL 榜单 Latency 列</td><td>Mean / P95</td><td>只做初筛</td><td>榜单环境≠我们的部署</td></tr>
+<tr><td>F 稳定</td><td>自测重复 5 次</td><td>抖动</td><td>自测</td><td>—</td></tr>
+</tbody></table>
+<h3>2.2 抽样规模（控制成本）</h3>
+<table><thead><tr><th>集</th><th>全量</th><th>抽样</th><th>理由</th></tr></thead><tbody>
+<tr><td>BFCL v4 单轮</td><td>~2,000</td><td>600</td><td>±3.8pt（p=0.8），够判 80/90 两档</td></tr>
+<tr><td>BFCL v4 多轮</td><td>~800</td><td>300</td><td>±4.5pt</td></tr>
+<tr><td>τ²-bench</td><td>3 域</td><td>每域 15 个任务</td><td>只判&quot;能不能闭环&quot;，不判细节</td></tr>
+<tr><td>ACEBench</td><td>~1,000</td><td>300</td><td>中文对照</td></tr>
+<tr><td>IFEval</td><td>541</td><td>全量</td><td>便宜</td></tr>
+<tr><td>HaluEval-zh</td><td>—</td><td>200</td><td>只看倾向</td></tr>
+<tr><td><strong>合计</strong></td><td>—</td><td><strong>约 1,750 次调用/模型</strong></td><td>云 API &lt; ¥50/模型</td></tr>
+</tbody></table>
+<h3>2.3 尺子1 的判据</h3>
+<table><thead><tr><th>指标</th><th>门槛（淘汰线）</th></tr></thead><tbody>
+<tr><td>BFCL 单轮 AST</td><td>≥ 75%</td></tr>
+<tr><td>BFCL 多轮</td><td>≥ 55%</td></tr>
+<tr><td>τ² 闭环成功率</td><td>≥ 40%</td></tr>
+<tr><td>IFEval 严格通过率</td><td>≥ 80%</td></tr>
+<tr><td>幻觉&quot;该拒未拒&quot;率</td><td>≤ 15%</td></tr>
+</tbody></table>
+<p>&gt; 门槛偏低是有意的：公开集分布不贴业务，够用来剔除&quot;根本不行&quot;的候选即可，真正的及格线在尺子2。</p>
+<h3>2.4 摸高轨怎么用</h3>
+<p>闭源 SOTA（Claude Opus 5 / GPT-6.x / Gemini / Doubao Pro / Qwen Max）跑同一套尺子1 + 尺子2 的 200 条抽样，得到&quot;上限线&quot;：</p>
+<pre><code>
+差距 = 上限线分数 − 最好的开源候选分数
+性价比 = 差距 / 成本倍数
+</code></pre>
+<p>判断标准【自研归纳】：</p>
+<ul><li>差距 ≤5pt：开源直接用，差距不值得付费</li><li>差距 5–12pt：看尺子2 里差的是哪一类；若是&quot;不该调&quot;或&quot;口语&quot;这类可工程化修补的，仍选开源</li><li>差距 &gt;12pt：说明开源档根本不够，重新考虑模型规模或微调</li></ul>
+<hr/>
+<h2>3. 尺子2：业务自建集</h2>
+<h3>3.1 场景矩阵</h3>
+<table><thead><tr><th>能力族</th><th>家庭音箱</th><th>手机助手</th></tr></thead><tbody>
+<tr><td>闲聊/情感</td><td>✅ 高比例</td><td>✅ 中比例</td></tr>
+<tr><td>设备控制</td><td>✅ 灯/空调/窗帘/扫地机</td><td>⚠️ 少（手机外设）</td></tr>
+<tr><td>内容播放</td><td>✅ 音乐/电台/有声书</td><td>✅ 音乐/播客</td></tr>
+<tr><td>日程提醒</td><td>✅ 家庭日程、儿童作息</td><td>✅ 个人日程、会议</td></tr>
+<tr><td>查询</td><td>✅ 天气/百科/菜谱</td><td>✅ 路线/营业时间/快递</td></tr>
+<tr><td>通讯</td><td>⚠️ 家庭留言</td><td>✅ 微信/短信/通话</td></tr>
+<tr><td>跨应用</td><td>❌</td><td>✅ 通知摘要、打车、导航</td></tr>
+<tr><td>多轮指代</td><td>✅</td><td>✅</td></tr>
+<tr><td>不该调/该问</td><td>✅ 写操作确认</td><td>✅ 隐私操作确认</td></tr>
+</tbody></table>
+<h3>3.2 六轴与配额</h3>
+<table><thead><tr><th>轴</th><th>权重</th><th>家庭音箱 L1</th><th>手机助手 L1</th><th>合计</th></tr></thead><tbody>
+<tr><td>A1 单步选择</td><td>—</td><td>90</td><td>90</td><td>180</td></tr>
+<tr><td>A2 参数填充</td><td>—</td><td>60</td><td>60</td><td>120</td></tr>
+<tr><td>A3 两步闭环</td><td>—</td><td>25</td><td>25</td><td>50</td></tr>
+<tr><td>A4 不该调/该问</td><td>—</td><td>40</td><td>40</td><td>80</td></tr>
+<tr><td>B 口语约束</td><td>20%</td><td>90</td><td>70</td><td>160</td></tr>
+<tr><td>C 事实保真</td><td>15%</td><td>50</td><td>50</td><td>100</td></tr>
+<tr><td>D 多轮/上下文</td><td>10%</td><td>50</td><td>60</td><td>110</td></tr>
+<tr><td>E 时延</td><td>10%</td><td>30</td><td>30</td><td>60</td></tr>
+<tr><td>F 稳定</td><td>10%</td><td>20</td><td>20</td><td>40</td></tr>
+<tr><td><strong>合计</strong></td><td>100%</td><td><strong>455</strong></td><td><strong>445</strong></td><td><strong>900</strong></td></tr>
+</tbody></table>
+<p>工具闭环（A 轴）合计 430 条，权重 35%，是最大盘。三档样本量：</p>
+<table><thead><tr><th>档</th><th>家庭</th><th>手机</th><th>合计</th><th>A 轴 CI</th></tr></thead><tbody>
+<tr><td>L0 冒烟</td><td>60</td><td>60</td><td>120</td><td>±9pt（不判结论）</td></tr>
+<tr><td>L1 判定</td><td>455</td><td>445</td><td>900</td><td>±3.1pt</td></tr>
+<tr><td>L2 全量</td><td>1,500</td><td>1,500</td><td>3,000</td><td>±1.7pt</td></tr>
+</tbody></table>
+<h3>3.3 两套工具集</h3>
+<table><thead><tr><th>家庭音箱</th><th>手机助手</th></tr></thead><tbody>
+<tr><td><code>control_light(room,on,level)</code></td><td><code>send_message(app,contact,content)</code></td></tr>
+<tr><td><code>set_ac(mode,temperature)</code></td><td><code>read_notifications(limit)</code></td></tr>
+<tr><td><code>control_curtain(room,action)</code></td><td><code>create_calendar(title,time)</code></td></tr>
+<tr><td><code>control_vacuum(mode,room)</code></td><td><code>navigate_to(destination,mode)</code></td></tr>
+<tr><td><code>play_music(song/playlist)</code></td><td><code>play_music(song/playlist)</code></td></tr>
+<tr><td><code>create_reminder(content,time,who)</code></td><td><code>call_contact(name)</code></td></tr>
+<tr><td><code>get_weather(city,date)</code></td><td><code>get_weather(city,date)</code></td></tr>
+<tr><td><code>get_recipe(dish)</code></td><td><code>get_route_eta(destination)</code></td></tr>
+<tr><td><code>family_announce(content)</code></td><td><code>summarize_notifications(app)</code></td></tr>
+</tbody></table>
+<p><strong>schema 不混用</strong>：用同一套工具集测两个场景，测到的是&quot;模型对陌生 schema 的泛化&quot;，不是业务能力。</p>
+<h3>3.4 数据来源</h3>
+<table><thead><tr><th>来源</th><th>占比</th><th>说明</th></tr></thead><tbody>
+<tr><td>真实语音转写（脱敏）</td><td>50%</td><td>含口音、口误、断句；家庭场景还有多人交叉</td></tr>
+<tr><td>后台真实输出（结论 + 字段）</td><td>30%</td><td>转述题与保真题的来源</td></tr>
+<tr><td>人工构造边界题</td><td>20%</td><td>空结果、超时、缺参、越权、近邻易混</td></tr>
+</tbody></table>
+<h3>3.5 记录 schema</h3>
+<pre><code>
+{
+  &quot;id&quot;: &quot;talker-home-A2-light-0007&quot;,
+  &quot;scene&quot;: &quot;home&quot;,
+  &quot;axis&quot;: &quot;A2&quot;,
+  &quot;family&quot;: &quot;light&quot;,
+  &quot;turns&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;text&quot;: &quot;把客厅灯调暗一点&quot;}],
+  &quot;tools&quot;: [&quot;control_light&quot;, &quot;set_ac&quot;, &quot;control_curtain&quot;],
+  &quot;gold&quot;: {&quot;tool_call&quot;: {&quot;name&quot;: &quot;control_light&quot;,
+                          &quot;args&quot;: {&quot;room&quot;: &quot;客厅&quot;, &quot;on&quot;: true, &quot;level&quot;: 30}}},
+  &quot;constraints&quot;: {&quot;first_sentence_max_chars&quot;: 15, &quot;max_chars&quot;: 60, &quot;no_markdown&quot;: true},
+  &quot;meta&quot;: {&quot;source&quot;: &quot;real_transcript&quot;, &quot;far_field&quot;: true, &quot;tv_on&quot;: true}
+}
+</code></pre>
+<h3>3.6 判分</h3>
+<table><thead><tr><th>轴</th><th>判分方式</th></tr></thead><tbody>
+<tr><td>A1/A2/A3</td><td>函数名精确 + 参数 AST 比对（部分对记 0.5；两步需两跳都成功）</td></tr>
+<tr><td>A4</td><td>该静默却调用 = 误调；该确认却直接执行 = 误执行</td></tr>
+<tr><td>B</td><td>全规则：首句 ≤15 字、≤60 字、禁 markdown/列表/括号/emoji/&quot;根据…&quot;</td></tr>
+<tr><td>C</td><td>must_contain / must_not_contain 精确子串；空结果必须表达&quot;没查到&quot;</td></tr>
+<tr><td>D</td><td>最终工具调用与期望槽位比对</td></tr>
+<tr><td>E</td><td>TTFT P50/P95、首句时延</td></tr>
+<tr><td>F</td><td>同输入 5 次一致率</td></tr>
+</tbody></table>
+<h3>3.7 决策规则</h3>
+<p>硬门槛（任一不满足即淘汰）：JSON 合法率 ≥99%、误调率 ≤5%（家庭音箱 ≤3%）、口语违规 ≤2%、事实保真 ≥98%、空结果诚实 ≥95%、TTFT P95 ≤800 ms。</p>
+<p>加权（满分 100）：工具闭环 35 / 口语 20 / 保真 15 / 多轮 10 / 时延 10 / 稳定 10。</p>
+<p>三态：任一门槛不过 → 淘汰；全过且 ≥75 → 保留进 L2；其余 → 待定（最多迭代 3 轮）。</p>
+<hr/>
+<h2>4. 两把尺子怎么串起来</h2>
+<pre><code>
+① 尺子1（公开集，约 1,750 次/模型）
+     开源候选 6–8 个 + 闭源 SOTA 3 个（摸高）
+        ↓  淘汰线：BFCL 单轮 ≥75、多轮 ≥55、τ² ≥40、IFEval ≥80、该拒未拒 ≤15%
+② 通过者 2–4 个 → 尺子2 L1（900 条/模型）
+        ↓  硬门槛 + 加权 + 三态
+③ 保留者 → 尺子2 L2（3,000 条）定稿
+        ↓
+④ 结论 = 定选模型 + 与摸高轨的差距（pt）× 成本倍数
+</code></pre>
+<p>时间：尺子1 约 1 天（含接入），尺子2 建集 5 人日 + 跑批 1 天。</p>
+<hr/>
+<h2>5. 成本与统计</h2>
+<table><thead><tr><th>项</th><th>数量</th><th>估算</th></tr></thead><tbody>
+<tr><td>尺子1</td><td>11 模型 × 1,750</td><td>19,250 次调用，云 API &lt; ¥60/模型【估算】</td></tr>
+<tr><td>尺子2 L1</td><td>4 模型 × 900</td><td>3,600 次调用</td></tr>
+<tr><td>尺子2 L2</td><td>2 模型 × 3,000</td><td>6,000 次调用</td></tr>
+<tr><td>自部署推理</td><td>9B/27B 单机</td><td>约 20 GPU 时</td></tr>
+<tr><td>建集</td><td>900 条</td><td>5 人日</td></tr>
+</tbody></table>
+<p>统计纪律：Wilson 95% CI；差异小于 CI 宽度写&quot;不可区分&quot;；dev/test 隔离（尺子2 的 L1 可调 prompt，L2 只报一次）。</p>
+<hr/>
+<h2>6. 风险</h2>
+<table><thead><tr><th>风险</th><th>影响</th><th>回退</th></tr></thead><tbody>
+<tr><td>公开集与业务分布差距大</td><td>尺子1 分数误导</td><td>尺子1 只做淘汰；定选只看尺子2</td></tr>
+<tr><td>真实转写不足</td><td>尺子2 分布失真</td><td>用合成顶，标 <code>source=synthetic</code>，并降低结论强度</td></tr>
+<tr><td>闭源 API 版本漂移</td><td>上限线不可复现</td><td>记录模型 id + 日期，跨月不比较</td></tr>
+<tr><td>自部署量化掉点</td><td>选型结论失效</td><td>一律以实际部署精度（FP8/AWQ）为准</td></tr>
+<tr><td>工具 schema 变更</td><td>历史结果不可比</td><td>schema 版本号写进题集，跨版本不比较</td></tr>
+</tbody></table></body></html>

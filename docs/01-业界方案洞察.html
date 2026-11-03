@@ -12,116 +12,118 @@ pre{background:#0f172a;color:#e2e8f0;padding:14px;border-radius:8px;overflow-x:a
 pre code{background:none;color:inherit;padding:0}
 blockquote{border-left:4px solid #cbd5e1;margin:10px 0;padding:2px 14px;color:#4b5563}
 hr{border:none;border-top:1px solid #e5e7eb;margin:26px 0}
-</style></head><body><h1>Talker LLM 选型：业界方案洞察</h1>
-<p>&gt; 研究对象：语音交互系统 Talker 层内的 LLM，负责<strong>闭环简单任务</strong>——闲聊、查询（天气/日程/音乐/百科）、单步到两步的工具调用；复杂推理与长任务交给 Thinker。</p>
-<p>&gt; 版本：v1.0　｜　日期：2026-11-03</p>
-<p>&gt; 来源分级：【官方】模型卡/厂商文档｜【榜单】公开榜实测｜【第三方】媒体/博客汇总｜【自研归纳】我的提炼</p>
+</style></head><body><h1>Talker LLM 选型：业界方案洞察（云侧 · 开源 vs 闭源 SOTA）</h1>
+<p>&gt; 研究对象：语音交互系统 Talker 层内的 LLM，负责<strong>闭环简单任务</strong>——闲聊、查询、单步到两步工具调用。复杂推理与长任务交给 Thinker。</p>
+<p>&gt; 部署边界：<strong>只考虑云侧</strong>（自建 GPU 或云 API），不考虑端侧。</p>
+<p>&gt; 模型分两轨：<strong>开源轨</strong>用于实际选型；<strong>闭源 SOTA 轨</strong>用于摸高（探能力上限、量化差距）。</p>
+<p>&gt; 场景：家庭音箱 + 手机助手。</p>
+<p>&gt; 版本：v2.0　｜　日期：2026-11-03</p>
+<p>&gt; 来源分级：【官方】模型卡/厂商文档｜【榜单】公开榜｜【第三方】媒体/博客｜【自研归纳】</p>
 <hr/>
 <h2>1. 结论摘要</h2>
 <table><thead><tr><th>#</th><th>判断</th><th>依据</th></tr></thead><tbody>
-<tr><td>1</td><td>端侧 4B 已经够&quot;能用&quot;，9B 是&quot;好用&quot;的分水岭</td><td>Qwen3.5-9B BFCL-V4 66.1、τ²-bench 79.1【官方】；端侧三强是 Qwen3-4B-2507 / Gemma 4 E4B / Phi-4-mini【第三方】</td></tr>
-<tr><td>2</td><td><strong>查询类不能靠参数知识</strong>，必须走工具</td><td>Qwen3.5-4B/9B 在 AA-Omniscience 上幻觉率 80–82%【第三方实测汇总】</td></tr>
-<tr><td>3</td><td>时延里 LLM 只占 200–1000 ms，且可以与判停重叠</td><td>级联链路实测区间【第三方】；判停 200–800 ms 往往比 LLM 更贵</td></tr>
-<tr><td>4</td><td>口语化输出是<strong>独立能力</strong>，榜单完全不覆盖</td><td>BFCL/τ² 只看工具正确性，不看&quot;这句话能不能念出来&quot;</td></tr>
-<tr><td>5</td><td>选型必须&quot;部署形态先行&quot;：端侧/边缘/云三档的候选池不同，跨档比较无意义</td><td>三档的量化、显存、成本结构完全不同</td></tr>
+<tr><td>1</td><td>云侧开源已能覆盖 Talker 任务：9B–27B 一档是主力，百 B 级 MoE 才谈得上&quot;接近闭源&quot;</td><td>Qwen3.5-9B BFCL-V4 66.1 / τ² 79.1【官方】；Qwen3.5-27B、122B-A10B 均为 Apache-2.0【官方】</td></tr>
+<tr><td>2</td><td>闭源 SOTA 的领先主要在<strong>多轮工具</strong>与<strong>长上下文</strong>，不在单轮查询</td><td>BFCL v4 榜首 Overall 77.47、单轮 88.58、多轮 73.76【榜单】</td></tr>
+<tr><td>3</td><td><strong>查询必须走工具</strong>，任何模型都不能靠参数知识</td><td>小模型幻觉率 80–82%【第三方实测汇总】；闭源也一样，只是错得更少</td></tr>
+<tr><td>4</td><td>时延瓶颈是判停（200–800 ms）而不是 LLM（200–1000 ms）</td><td>级联链路区间汇总【第三方】</td></tr>
+<tr><td>5</td><td>家庭音箱与手机助手的差异在<strong>声学与工具集</strong>，不在模型能力</td><td>远场 vs 近场、家居控制 vs 跨应用，工具 schema 完全不同</td></tr>
 </tbody></table>
-<p><strong>一句话</strong>：Talker LLM 的选型不是&quot;找最强的 4B&quot;，而是&quot;在时延预算内，找工具调用最稳、口语最像人、事实不编的那一档&quot;——这三件事公开榜单只覆盖第一件。</p>
+<p><strong>一句话</strong>：这次选型是&quot;在云侧开源里找最稳的一档，用闭源 SOTA 画一条上限线，看差距值不值得多花钱&quot;。</p>
 <hr/>
-<h2>2. 先划清任务边界</h2>
+<h2>2. 任务边界</h2>
 <table><thead><tr><th>能力</th><th>归属</th><th>判据</th></tr></thead><tbody>
 <tr><td>闲聊、情感回应、附和</td><td>Talker</td><td>无需外部信息，1 轮内可答</td></tr>
-<tr><td>单步查询（天气/时间/日程/音乐/百科）</td><td>Talker</td><td>1 次工具调用 + 转述</td></tr>
-<tr><td>两步闭环（查完再控制，如&quot;看看明天天气再决定要不要带伞&quot;）</td><td>Talker（上限）</td><td>≤2 次工具调用</td></tr>
-<tr><td>多步规划、跨应用编排、长文分析</td><td>Thinker</td><td>需要分解、需要多轮观察</td></tr>
-<tr><td>拒识 / 判&quot;这话是不是对我说的&quot;</td><td>L1 语义 VAD</td><td>不进 Talker LLM（见 sidetalk-eval 研究）</td></tr>
+<tr><td>单步查询（天气/日程/音乐/百科/汇率）</td><td>Talker</td><td>1 次工具调用 + 转述</td></tr>
+<tr><td>两步闭环（查完再控）</td><td>Talker（上限）</td><td>≤2 次工具调用</td></tr>
+<tr><td>多步规划、跨应用编排、长文分析</td><td>Thinker</td><td>需分解、需多轮观察</td></tr>
+<tr><td>拒识 / &quot;这话是不是对我说的&quot;</td><td>L1 语义 VAD</td><td>不进 Talker LLM（见 sidetalk-eval）</td></tr>
 </tbody></table>
-<p>这条边界决定评测集的重心：<strong>工具调用的&quot;简单但高频&quot;，不是&quot;复杂但罕见&quot;</strong>。</p>
 <hr/>
-<h2>3. 三档部署形态与候选池</h2>
-<h3>3.1 端侧（手机 / 车机 / 眼镜，1–4B）</h3>
-<table><thead><tr><th>模型</th><th>参数</th><th>许可</th><th>上下文</th><th>工具调用</th><th>备注</th></tr></thead><tbody>
-<tr><td>Qwen3.5-0.8B / 2B / 4B</td><td>0.8 / 2 / 4B</td><td>Apache-2.0</td><td>262K</td><td>原生 function calling</td><td>原生多模态（含视觉），thinking/non-thinking 混合【官方】</td></tr>
-<tr><td>Gemma 4 E2B / E4B</td><td>有效 2B / 4B</td><td>Gemma 许可</td><td>—</td><td>支持 function calling</td><td><strong>E2B/E4B 原生支持音频输入</strong>【官方】</td></tr>
-<tr><td>Phi-4-mini-instruct</td><td>3.8B</td><td>MIT</td><td>128K</td><td>支持</td><td>微软系，端侧老牌【官方】</td></tr>
-<tr><td>Qwen3-4B-Instruct-2507</td><td>4B</td><td>Apache-2.0</td><td>256K</td><td>支持</td><td>2025 代，仍被端侧方案广泛采用【第三方】</td></tr>
-<tr><td>Llama 3.2 1B / 3B</td><td>1 / 3B</td><td>Llama 许可</td><td>128K</td><td>支持</td><td>生态最广，中文偏弱</td></tr>
+<h2>3. 两轨候选池</h2>
+<h3>3.1 开放权重轨（实际选型池）</h3>
+<table><thead><tr><th>模型</th><th>参数</th><th>许可</th><th>单卡可行性</th><th>定位</th></tr></thead><tbody>
+<tr><td><strong>Qwen3.5-9B</strong></td><td>9B dense</td><td>Apache-2.0</td><td>1×A10/L20 可跑 FP8</td><td>云侧主力基线（BFCL-V4 66.1 / τ² 79.1）【官方】</td></tr>
+<tr><td><strong>Qwen3.5-27B</strong></td><td>27B dense</td><td>Apache-2.0</td><td>1×L40S/H20</td><td>质量档，工具成功率上探</td></tr>
+<tr><td><strong>Qwen3.5-122B-A10B</strong></td><td>122B MoE（激活 10B）</td><td>Apache-2.0</td><td>多卡（有 NVFP4 部署配方）</td><td>开源天花板档【官方】</td></tr>
+<tr><td><strong>DeepSeek-V4-Flash</strong></td><td>小档</td><td>见模型卡</td><td>单机多卡</td><td>低价高并发替代</td></tr>
+<tr><td><strong>DeepSeek-V4-Pro</strong></td><td>1T 级 MoE</td><td>Apache-2.0（官方确认开源）</td><td>多机</td><td>只作参考，不实采</td></tr>
+<tr><td>Kimi K3</td><td>2.8T MoE</td><td>开放权重</td><td>不现实</td><td>仅作能力参照</td></tr>
+<tr><td>GLM 系（版本待核）</td><td>—</td><td>待核</td><td>—</td><td>补齐国产对照</td></tr>
 </tbody></table>
-<p>端侧的现实约束（不是模型能力问题）：</p>
-<ul><li>Q4_K_M 量化下 4B 约 2.5–3 GB 内存占用，手机可跑但会和相机/导航抢内存</li><li>冷启动加载 4B 约 1–3 s，<strong>必须常驻或预热</strong>，否则首轮体验崩</li><li>解码速度是硬约束：30 tok/s 时，一句 20 字的回复要 0.7 s 才念得完</li></ul>
-<h3>3.2 边缘 / 单卡（4–9B，机房侧）</h3>
-<table><thead><tr><th>模型</th><th>参数</th><th>用途</th><th>关键数据</th></tr></thead><tbody>
-<tr><td><strong>Qwen3.5-9B</strong></td><td>9B</td><td>边缘主力候选</td><td>BFCL-V4 <strong>66.1</strong>、τ²-bench <strong>79.1</strong>、MMLU-Pro 82.5【官方】</td></tr>
-<tr><td>Qwen3.5-4B</td><td>4B</td><td>边缘低成本档</td><td>Intelligence Index 27（&lt;5B 最强）【第三方】</td></tr>
-<tr><td>Qwen3.5-2B</td><td>2B</td><td>降级/兜底</td><td>Intelligence Index 16，追平 7B 级 Falcon-H1R【第三方】</td></tr>
-<tr><td>其他</td><td>—</td><td>需按许可与中文能力单独评</td><td>—</td></tr>
+<p>选型实操建议：<strong>只把&quot;能在自己机房单机/双机跑起来&quot;的模型列进候选</strong>。9B / 27B / 122B-A10B / V4-Flash 这四档足够覆盖价格-质量曲线；V4-Pro 与 K3 用来回答&quot;开源到底能到多高&quot;，不进评测排期。</p>
+<h3>3.2 闭源 SOTA 轨（摸高，不参与选型）</h3>
+<table><thead><tr><th>模型</th><th>用途</th></tr></thead><tbody>
+<tr><td>Claude Opus 5 / Sonnet 5</td><td>BFCL v4 榜首量级，代表当前工具调用上限【榜单】</td></tr>
+<tr><td>GPT-6.x / 5.x 系列</td><td>上限对照</td></tr>
+<tr><td>Gemini 3/4 系列</td><td>上限对照（多模态）</td></tr>
+<tr><td>Doubao Seed 2.0 Pro</td><td>国内闭源主力，价格与合规可控</td></tr>
+<tr><td>Qwen Max（闭源档）</td><td>同厂闭源上限，便于&quot;同数据同 prompt&quot;对比开源档</td></tr>
 </tbody></table>
-<p>9B 的价值不在&quot;更聪明&quot;，而在<strong>工具调用成功率跨过 60% 线</strong>——低于这条线，用户每 3 次就遇到 1 次失败，语音场景无法用&quot;重试&quot;掩盖。</p>
-<h3>3.3 云 API（Lite / Mini 档）</h3>
-<table><thead><tr><th>模型</th><th>输入 / 输出价格</th><th>上下文</th><th>备注</th></tr></thead><tbody>
-<tr><td>Doubao Seed 2.0 Lite</td><td>$0.13 / $0.76 每 M</td><td>256K</td><td>支持函数调用与视觉【第三方】</td></tr>
-<tr><td>Doubao Seed 2.0 Mini</td><td>$0.06 / $0.56 每 M</td><td>256K</td><td>高并发批处理档【第三方】</td></tr>
-<tr><td>qwen-plus / qwen-flash</td><td>国内按 token 计费</td><td>大</td><td>我们已实测：flash 300 ms、plus 460 ms 首包【实测】</td></tr>
-<tr><td>DeepSeek-V4-Flash</td><td>低价档</td><td>大</td><td>适合做对照，不做主力</td></tr>
-<tr><td>Gemini Flash-Lite / GPT-mini 档</td><td>—</td><td>—</td><td>需出境评估，语音场景通常不选</td></tr>
-</tbody></table>
-<p>云档的真实成本不在 token，而在<strong>网络往返</strong>：国内跨省 RTT 20–60 ms，加 TLS 与排队，首包很难稳定低于 300 ms。</p>
+<p>用法：<strong>只跑尺子1（公开集）+ 尺子2 的少量抽样</strong>，得到一条&quot;上限线&quot;。它的价值不是被选上，而是让选型结论有参照——例如&quot;27B 开源做到上限的 92%，差 8 个点，值不值得多付 10 倍成本&quot;。</p>
 <hr/>
-<h2>4. 时延预算：LLM 到底能占多少</h2>
-<p>级联链路的六段实测区间【第三方汇总】：</p>
-<table><thead><tr><th>段</th><th>典型区间</th><th>驱动因素</th></tr></thead><tbody>
-<tr><td>入网与缓冲</td><td>20–100 ms</td><td>网络距离、抖动缓冲、编解码</td></tr>
-<tr><td><strong>判停（end-of-turn）</strong></td><td><strong>200–800 ms</strong></td><td>静音超时或判停模型，固定 500 ms 很常见</td></tr>
-<tr><td>STT 终稿</td><td>100–500 ms</td><td>流式分块、终稿逻辑</td></tr>
-<tr><td><strong>LLM 首 token</strong></td><td><strong>200–1000 ms</strong></td><td>模型大小、prompt 长度、工具调用</td></tr>
-<tr><td>TTS 首帧</td><td>80–300 ms</td><td>音色、是否早发首句</td></tr>
-<tr><td>出网与播放</td><td>40–200 ms</td><td>网络、端侧缓冲</td></tr>
+<h2>4. 场景差异：家庭音箱 vs 手机助手</h2>
+<table><thead><tr><th>维度</th><th>家庭音箱</th><th>手机助手</th></tr></thead><tbody>
+<tr><td>声学</td><td>远场 1–4 m、混响、电视干扰</td><td>近场 0.2–0.5 m、街道噪声</td></tr>
+<tr><td>交互</td><td>唤醒后连续对话、多人共享</td><td>单手、随时打断、屏幕上下文</td></tr>
+<tr><td>工具集</td><td>灯/空调/窗帘/扫地机/定时/音乐/家庭日程</td><td>微信/日历/地图/音乐/通知摘要/打车</td></tr>
+<tr><td>权限</td><td>家庭共享，写操作要确认</td><td>个人隐私，敏感操作要二次确认</td></tr>
+<tr><td>失败代价</td><td>全家人听到错误回复</td><td>隐私泄露风险更高</td></tr>
+<tr><td>典型 query</td><td>&quot;把客厅灯调暗一点&quot;&quot;明早七点叫我&quot;</td><td>&quot;把刚才那条消息回个好的&quot;&quot;导航到公司&quot;</td></tr>
 </tbody></table>
 <p>两条推论【自研归纳】：</p>
-<ol><li><strong>LLM 不是瓶颈，判停才是</strong>。把判停从 500 ms 固定超时改成预测式，收益和&quot;把 9B 换 4B&quot;相当，但不需要牺牲能力。</li><li>人类轮转间隔约 200 ms（跨语言研究共识），系统不可能追平；但<strong>首句 300 ms 内出声</strong>能把体感拉回&quot;可对话&quot;。因此 Talker LLM 的门槛应定为：</li></ol>
-<ul><li>端侧：TTFT ≤ 300 ms（Q4 量化、1k 上下文、单并发）</li><li>边缘/云：TTFT ≤ 500 ms，P95 ≤ 800 ms</li></ul>
+<ol><li>两场景<strong>不能共用一套工具集</strong>评测，否则测的是模型对 schema 的泛化，不是业务能力。</li><li>家庭音箱的写操作比例更高（灯/空调/门锁），因此&quot;误调&quot;与&quot;确认&quot;权重应高于手机助手。</li></ol>
 <hr/>
-<h2>5. 能力证据：榜单能证明什么、不能证明什么</h2>
-<h3>5.1 BFCL v4 的评分结构（2026-04-12 版）</h3>
-<table><thead><tr><th>维度</th><th>含义</th><th>对我们的价值</th></tr></thead><tbody>
-<tr><td>Single Turn（AST）</td><td>单次调用的函数名与参数</td><td>对应&quot;单步查询&quot;</td></tr>
-<tr><td>Multi Turn</td><td>多轮工具交互</td><td>对应&quot;两步闭环&quot;</td></tr>
-<tr><td>Agentic（Web Search / Memory）</td><td>带检索、带记忆的编排</td><td>我们不做，仅参考</td></tr>
-<tr><td>Hallucination（Relevance/Irrelevance）</td><td>该不该调、该不该拒</td><td>对应&quot;不该调时不乱调&quot;</td></tr>
-<tr><td>Latency（Mean/P95，秒）</td><td>端到端延迟</td><td>唯一可直接用的时延数据</td></tr>
+<h2>5. 时延预算（云侧）</h2>
+<table><thead><tr><th>段</th><th>典型区间</th><th>说明</th></tr></thead><tbody>
+<tr><td>入网与缓冲</td><td>20–100 ms</td><td>公网 RTT + 抖动缓冲</td></tr>
+<tr><td>判停</td><td>200–800 ms</td><td>固定静音超时常见 500 ms</td></tr>
+<tr><td>ASR 终稿</td><td>100–500 ms</td><td>流式分块</td></tr>
+<tr><td><strong>LLM 首 token</strong></td><td><strong>200–1000 ms</strong></td><td>模型大小、prompt 长度、是否触发工具</td></tr>
+<tr><td>TTS 首帧</td><td>80–300 ms</td><td>是否早发首句</td></tr>
+<tr><td>出网与播放</td><td>40–200 ms</td><td>网络 + 端侧缓冲</td></tr>
 </tbody></table>
-<p>榜首 Claude-Opus-4.5 Overall 77.47、单轮 88.58、多轮 73.76、幻觉 79.79【榜单】。<strong>这个分数段说明：即便是最强模型，多轮工具也只有七成多。</strong></p>
-<h3>5.2 小模型的实际水位</h3>
-<table><thead><tr><th>模型</th><th>BFCL-V4</th><th>τ²-bench</th><th>来源</th></tr></thead><tbody>
-<tr><td>Qwen3.5-9B</td><td>66.1</td><td>79.1</td><td>【官方】模型卡</td></tr>
-<tr><td>Qwen3.5-4B</td><td>待实测</td><td>待实测</td><td>—</td></tr>
-<tr><td>Qwen3-4B-2507 / Gemma 4 E4B / Phi-4-mini</td><td>三家差距明显，需自测</td><td>—</td><td>【第三方】博客明确声明&quot;数字是范围估计，不是单机实测&quot;</td></tr>
+<p>云侧门槛（本文档采用）：</p>
+<ul><li>Talker LLM TTFT：P50 ≤ 500 ms、P95 ≤ 800 ms（含工具决策）</li><li>一句话（≤25 字）整句时延：P95 ≤ 1.5 s</li></ul>
+<p>&gt; 注意：这里说的是<strong>离开机房前</strong>的模型侧时延；端到端体感还要加上网络与 TTS，那部分由 L1/TTS 负责，不在本选型范围。</p>
+<hr/>
+<h2>6. 能力证据：榜单能证明什么</h2>
+<h3>6.1 BFCL v4 的结构（2026-04-12 版）</h3>
+<table><thead><tr><th>维度</th><th>含义</th><th>对应我们的任务</th></tr></thead><tbody>
+<tr><td>Single Turn（AST）</td><td>函数名 + 参数</td><td>单步查询</td></tr>
+<tr><td>Multi Turn</td><td>多轮工具交互</td><td>两步闭环</td></tr>
+<tr><td>Agentic（Web Search/Memory）</td><td>检索与记忆编排</td><td>我们不做，仅参考</td></tr>
+<tr><td>Hallucination（Relevance/Irrelevance）</td><td>该不该调</td><td>&quot;不该调时不乱调&quot;</td></tr>
+<tr><td>Latency（Mean/P95）</td><td>端到端秒数</td><td>唯一可直接用的时延数据</td></tr>
 </tbody></table>
-<p><strong>关键提醒</strong>：第三方对比文自己也写了&quot;these numbers are illustrative ranges&quot;，所以候选池可以照它选，<strong>分数不能照它抄</strong>——必须自己跑。</p>
-<h3>5.3 幻觉是&quot;查询&quot;场景的头号风险</h3>
-<p>Qwen3.5-4B 在 AA-Omniscience 上幻觉率 80%、准确率 12.8%；9B 幻觉 82%、准确率 14.7%【第三方实测汇总】。</p>
-<p>这条决定了产品设计：<strong>Talker 的&quot;查询&quot;必须走工具/RAG，参数知识只能用于闲聊</strong>。评测集必须包含&quot;工具返回空/超时/无权限&quot;三类分支，考察模型会不会拿参数知识硬编答案。</p>
-<hr/>
-<h2>6. 业界怎么做的（模式提炼）</h2>
-<table><thead><tr><th>模式</th><th>代表做法</th><th>对我们的可借鉴点</th></tr></thead><tbody>
-<tr><td>端云混合</td><td>简单指令端侧、复杂转云</td><td>Talker 端侧 4B + Thinker 云侧，正是这个形态</td></tr>
-<tr><td>查询一律走工具</td><td>语音助手把天气/音乐/日程全部工具化，模型只负责选工具与转述</td><td>评测权重应向&quot;工具选择 + 短转述&quot;倾斜，而不是考模型知识</td></tr>
-<tr><td>口语化后处理</td><td>生成后过一遍&quot;去 markdown、限长、改数字读法&quot;</td><td>我们的 L3 已有约束层；Talker 同样需要，且要<strong>进评测</strong></td></tr>
-<tr><td>双模型分工</td><td>小模型出话、大模型兜底</td><td>与我们 Talker/Thinker 分工同构</td></tr>
-<tr><td>门控前置</td><td>先判&quot;该不该说话&quot;，再决定说什么</td><td>已由 L1 语义 VAD 承担，不重复建</td></tr>
+<p>榜首：Overall 77.47、单轮 88.58、多轮 73.76、幻觉 79.79【榜单】。<strong>多轮只有七成多</strong>，这正是 Talker 需要重点测的切面。</p>
+<h3>6.2 开源 vs 闭源的差距在哪</h3>
+<table><thead><tr><th>切面</th><th>差距量级【自研归纳】</th><th>对选型的影响</th></tr></thead><tbody>
+<tr><td>单轮工具、参数填充</td><td>小（个位数 pt）</td><td>开源 9B–27B 基本够</td></tr>
+<tr><td>多轮工具、并行调用</td><td>明显（10 pt 量级）</td><td>两步闭环要靠尺子2 实测</td></tr>
+<tr><td>长上下文（&gt;32k）</td><td>明显</td><td>Talker 用不到，可忽略</td></tr>
+<tr><td>中文口语理解</td><td>开源国产模型不落后</td><td>家庭/手机场景反而占优</td></tr>
+<tr><td>事实幻觉</td><td>都在 80% 量级（AA-Omniscience）</td><td>都别信参数知识，一律走工具</td></tr>
 </tbody></table>
-<p>【自研归纳】五条里，只有&quot;查询走工具&quot;和&quot;口语化后处理&quot;是 Talker LLM 选型能直接落地的两条；其余两条是架构层，一条在 L1。</p>
 <hr/>
-<h2>7. 对选型的五条启示</h2>
-<ol><li><strong>候选池按部署形态分三组</strong>，不跨档比较：端侧 0.8–4B、边缘 4–9B、云 Lite。</li><li><strong>工具调用是主判据</strong>，且分&quot;单步 / 两步 / 不该调&quot;三种切面；只有单步过关不够。</li><li><strong>口语约束必须自建</strong>：首句 ≤15 字、禁 markdown/列表/括号、数字读法、不许复述用户原话。</li><li><strong>事实性用&quot;数字与专名精确匹配&quot;判</strong>，不靠 judge；同时设&quot;缺素材应说不知道&quot;的负例。</li><li><strong>时延自己压</strong>：TTFT/P95 在量化版本上测，榜单的 Latency 列只能做初筛。</li></ol>
+<h2>7. 业界五种做法（可借鉴）</h2>
+<table><thead><tr><th>模式</th><th>做法</th><th>对我们的用法</th></tr></thead><tbody>
+<tr><td>查询全工具化</td><td>天气/音乐/日程全部走 API，模型只选工具与转述</td><td>尺子2 的工具集照此设计</td></tr>
+<tr><td>口语化后处理</td><td>生成后去 markdown、限长、改数字读法</td><td>进入评测（B 轴），不放在模型外</td></tr>
+<tr><td>大小模型分工</td><td>小模型出话、大模型兜底</td><td>对应 Talker/Thinker；Talker 只需 9–27B 档</td></tr>
+<tr><td>上限对照</td><td>用闭源 SOTA 画一条线，判断差距是否值得付费</td><td>本研究的&quot;摸高轨&quot;</td></tr>
+<tr><td>门控前置</td><td>先判该不该说话，再说内容</td><td>已由 L1 承担</td></tr>
+</tbody></table>
 <hr/>
-<h2>附录：本文引用</h2>
+<h2>8. 对选型的五条启示</h2>
+<ol><li><strong>候选池只放可自部署的开源模型</strong>（9B / 27B / 122B-A10B / V4-Flash），闭源 SOTA 单列&quot;摸高轨&quot;。</li><li><strong>尺子1 公开集负责淘汰与摸高，尺子2 业务集负责定选</strong>；公开集分数不能直接当业务结论。</li><li><strong>两个场景两套工具集</strong>，家庭音箱偏写操作与确认，手机助手偏跨应用与隐私。</li><li><strong>&quot;不该调&quot;比&quot;调错&quot;更重要</strong>：语音场景里瞎调一次灯，用户会记很久。</li><li><strong>时延自己压</strong>：榜单 Latency 列只做初筛，真实 P95 必须在自己的部署与量化上测。</li></ol>
+<hr/>
+<h2>附录：引用</h2>
 <table><thead><tr><th>内容</th><th>出处</th></tr></thead><tbody>
-<tr><td>Qwen3.5 小模型尺寸/许可/上下文/多模态</td><td>HuggingFace 模型卡（Qwen3.5-4B / 9B）【官方】</td></tr>
-<tr><td>Qwen3.5-9B BFCL-V4 66.1 / τ² 79.1 / MMLU-Pro 82.5</td><td>Qwen 官方评测数字，经第三方文章转述【官方】</td></tr>
-<tr><td>Qwen3.5 小模型 Intelligence Index 与幻觉率</td><td>Artificial Analysis 文章【第三方】</td></tr>
-<tr><td>BFCL v4 评分结构与榜首分数</td><td>gorilla.cs.berkeley.edu 榜单（2026-04-12）【榜单】</td></tr>
-<tr><td>端侧三强（Qwen3-4B-2507 / Gemma 4 E4B / Phi-4-mini）</td><td>第三方对比博客（作者自注&quot;数字为范围估计&quot;）【第三方】</td></tr>
-<tr><td>Gemma 4 家族与 E2B/E4B 音频输入</td><td>Gemma 4 技术报告 arXiv:2607.02770 + HF 模型卡【官方】</td></tr>
-<tr><td>Doubao Seed 2.0 四档价格</td><td>第三方价格整理【第三方】</td></tr>
+<tr><td>Qwen3.5-9B BFCL-V4 66.1 / τ² 79.1 / MMLU-Pro 82.5</td><td>Qwen 官方评测数字（经第三方文章转述）【官方】</td></tr>
+<tr><td>Qwen3.5-27B / 122B-A10B 许可与部署</td><td>HuggingFace 模型卡、NVIDIA Dynamo 配方【官方】</td></tr>
+<tr><td>DeepSeek-V4-Pro 开源（Apache-2.0）</td><td>HuggingFace <code>deepseek-ai/DeepSeek-V4-Pro</code> + 媒体确认【官方/第三方】</td></tr>
+<tr><td>Kimi K3 开放权重 2.8T</td><td>HuggingFace GGUF 仓与模型说明【官方】</td></tr>
+<tr><td>BFCL v4 评分结构与榜首分数</td><td>gorilla.cs.berkeley.edu（2026-04-12）【榜单】</td></tr>
+<tr><td>小模型幻觉率 80–82%</td><td>Artificial Analysis AA-Omniscience【第三方】</td></tr>
 <tr><td>级联时延六段区间</td><td>语音 Agent 时延预算资料汇总【第三方】</td></tr>
 </tbody></table></body></html>

@@ -13,94 +13,90 @@ pre code{background:none;color:inherit;padding:0}
 blockquote{border-left:4px solid #cbd5e1;margin:10px 0;padding:2px 14px;color:#4b5563}
 hr{border:none;border-top:1px solid #e5e7eb;margin:26px 0}
 </style></head><body><h1>评测执行手册</h1>
-<p>&gt; 配套：《02-Talker-LLM选型评测集.md》（设计与口径）</p>
-<p>&gt; 目标：任何人拿到这个仓库，能在 1 小时内跑出第一个模型的六轴成绩。</p>
+<p>&gt; 配套：《02-Talker-LLM评测体系.md》（尺子1 公开集 / 尺子2 业务集）</p>
+<p>&gt; 目标：拿到仓库后 1 小时内能跑出第一个模型在尺子2 上的六轴成绩。</p>
 <hr/>
 <h2>1. 环境</h2>
 <pre><code>
-python3 --version     # 3.10+
-# 无第三方依赖：只用了标准库（urllib/json/re）
+python3 --version          # 3.10+，只用标准库
+export DASHSCOPE_API_KEY=sk-...   # 或 OPENAI_API_KEY；任意 OpenAI 兼容端点均可
 </code></pre>
-<p>调用云 API 需要 key（任选其一）：</p>
-<pre><code>
-export DASHSCOPE_API_KEY=sk-...      # 阿里百炼兼容模式
-export OPENAI_API_KEY=sk-...         # 任意 OpenAI 兼容端点
-</code></pre>
-<p>本地模型（vLLM / Ollama / llama.cpp server）都用同一套 OpenAI 兼容接口，改 <code>--base-url</code> 即可。</p>
 <hr/>
-<h2>2. 三步跑通</h2>
+<h2>2. 尺子2（业务集）三步跑通</h2>
 <pre><code>
 cd ~/repos/projects/talker-llm-selection
 
-# 1) 生成题集（L0 冒烟 120 条；L1 判定 900 条；L2 全量 3,000 条）
-python3 tools/build_taskset.py --tier L0 --out tasksets/L0.jsonl
+# 1) 生成题集（场景 home / phone / both；档位 L0 120·场景 / L1 900 / L2 3000）
+python3 tools/build_taskset.py --scene both --tier L0 --out tasksets/L0.jsonl
+python3 tools/build_taskset.py --scene both --tier L1 --out tasksets/L1.jsonl
 
-# 2) 跑模型（云 API 示例）
-python3 tools/run_model.py --taskset tasksets/L0.jsonl \
-  --model qwen-plus \
+# 2) 跑模型
+python3 tools/run_model.py --taskset tasksets/L1.jsonl --model qwen-plus \
   --base-url https://dashscope.aliyuncs.com/compatible-mode/v1 \
-  --out predictions/qwen-plus__L0.jsonl
+  --out predictions/qwen-plus__L1.jsonl
 
-# 3) 判分
-python3 tools/score.py --taskset tasksets/L0.jsonl \
-  --pred predictions/qwen-plus__L0.jsonl --report reports/qwen-plus__L0.md
+# 3) 判分（六轴 + 硬门槛 + 加权 + 三态）
+python3 tools/score.py --taskset tasksets/L1.jsonl \
+  --pred predictions/qwen-plus__L1.jsonl --report reports/qwen-plus__L1.md
 </code></pre>
-<p>本地模型示例（vLLM）：</p>
+<p>自部署模型同一套命令，改 <code>--base-url</code>：</p>
 <pre><code>
-python3 tools/run_model.py --taskset tasksets/L0.jsonl --model Qwen3.5-4B \
+python3 tools/run_model.py --taskset tasksets/L1.jsonl --model qwen3.5-27b \
   --base-url http://127.0.0.1:8000/v1 --api-key dummy \
-  --out predictions/qwen35-4b__L0.jsonl
+  --out predictions/qwen3.5-27b__L1.jsonl
 </code></pre>
 <hr/>
-<h2>3. 自检（不花 token）</h2>
+<h2>3. 尺子1（公开集）</h2>
+<p>公开集不重造，用官方 harness 跑，再把结果填进统一表格：</p>
+<table><thead><tr><th>集</th><th>官方入口</th><th>产出</th></tr></thead><tbody>
+<tr><td>BFCL v4</td><td><code>github.com/ShishirPatil/gorilla</code>（<code>berkeley-function-call-leaderboard</code>）</td><td>单轮/多轮/并行/幻觉分 + Latency</td></tr>
+<tr><td>τ²-bench</td><td><code>github.com/sierra-research/tau2-bench</code></td><td>三域闭环成功率</td></tr>
+<tr><td>ACEBench</td><td>官方仓库</td><td>中文工具调用准确率</td></tr>
+<tr><td>IFEval</td><td>官方实现</td><td>严格通过率</td></tr>
+<tr><td>HaluEval-zh / CMMLU</td><td>官方仓库</td><td>幻觉倾向 / 中文常识</td></tr>
+</tbody></table>
+<p>约定：</p>
+<ol><li>只抽样（见设计文档 §2.2），不跑全量，控制成本</li><li>统一 <code>temperature=0</code>、统一 prompt 模板；官方默认 prompt 与我们的差太多时，两版都跑并注明</li><li><strong>尺子1 只做淘汰与摸高</strong>，最终定选看尺子2</li></ol>
+<hr/>
+<h2>4. 自检（不花 token）</h2>
 <pre><code>
-# 用 gold 造 oracle，验证判分链路：应得 100 分、全门槛通过
 python3 tools/run_model.py --taskset tasksets/L0.jsonl --backend dryrun --out predictions/oracle__L0.jsonl
 python3 tools/score.py --taskset tasksets/L0.jsonl --pred predictions/oracle__L0.jsonl
 </code></pre>
-<p>仓库里已带两个自检产物，可直接对照：</p>
-<table><thead><tr><th>文件</th><th>期望</th></tr></thead><tbody>
-<tr><td><code>predictions/oracle__L0.jsonl</code></td><td>100.0 分，全部门槛 ✅</td></tr>
-<tr><td><code>predictions/mockbad__L0.jsonl</code></td><td>淘汰（误调 75%、口语违规 100%、保真 40%）</td></tr>
-</tbody></table>
-<p>这两个文件是<strong>判分器的测试夹具</strong>，不是模型成绩。</p>
-<hr/>
-<h2>4. 加一个新候选</h2>
-<ol><li>按部署形态分组（端侧 / 边缘 / 云），不要跨档比较</li><li>跑 L0 → 看 <code>invalid</code>/报错，确认协议通</li><li>跑 L1 → 出六轴与三态结论</li><li>通过后跑 L2 → 定稿</li></ol>
-<pre><code>
-python3 tools/run_model.py --taskset tasksets/L1.jsonl --model &lt;model&gt; \
-  --base-url &lt;url&gt; --out predictions/&lt;model&gt;__L1.jsonl
-python3 tools/score.py --taskset tasksets/L1.jsonl \
-  --pred predictions/&lt;model&gt;__L1.jsonl --report reports/&lt;model&gt;__L1.md
-</code></pre>
-<p>模型命名建议：<code>&lt;家族&gt;-&lt;尺寸&gt;-&lt;量化&gt;__&lt;档位&gt;</code>，例如 <code>qwen3.5-4b-awq4__L1</code>。</p>
-<hr/>
-<h2>5. 怎么读报告</h2>
-<table><thead><tr><th>字段</th><th>含义</th><th>红线</th></tr></thead><tbody>
-<tr><td><code>工具闭环 ToolAccLoose</code></td><td>函数对 + 参数全对记 1，参数部分对记 0.5</td><td>&lt; 60% 直接不用</td></tr>
-<tr><td><code>误调率（A4）</code></td><td>闲聊/缺参场景却调了工具</td><td><strong>&gt; 5% 淘汰</strong></td></tr>
-<tr><td><code>口语违规率</code></td><td>markdown/列表/括号/超长/长首句</td><td><strong>&gt; 2% 淘汰</strong></td></tr>
-<tr><td><code>事实保真</code></td><td>数字与专名是否原样搬运</td><td><strong>&lt; 98% 淘汰</strong></td></tr>
-<tr><td><code>空结果诚实</code></td><td>工具空/超时是否说&quot;没查到&quot;</td><td>&lt; 95% 淘汰</td></tr>
-<tr><td><code>TTFT P95</code></td><td>首 token 时延</td><td>端侧 &gt; 500 ms、云 &gt; 800 ms 淘汰</td></tr>
-<tr><td><code>5 次一致率</code></td><td>同输入重复 5 次的稳定性</td><td>&lt; 95% 要查采样/缓存</td></tr>
+<p>仓库自带两个夹具（<strong>判分器测试用，不是模型成绩</strong>）：</p>
+<table><thead><tr><th>文件</th><th>期望结果</th></tr></thead><tbody>
+<tr><td><code>predictions/oracle__L0.jsonl</code></td><td>100.0 分，全部硬门槛通过</td></tr>
+<tr><td><code>predictions/mockbad__L0.jsonl</code></td><td>淘汰（误调 75%、口语违规 100%、保真 ~32%）</td></tr>
 </tbody></table>
 <hr/>
-<h2>6. 常见坑</h2>
+<h2>5. 加一个候选</h2>
+<ol><li>先判它在哪一轨：开源轨（进选型）还是闭源轨（摸高）</li><li>跑尺子1 → 过淘汰线 → 跑尺子2 L0 → L1 → 通过者进 L2</li><li>命名：<code>&lt;家族&gt;-&lt;尺寸&gt;-&lt;精度&gt;__&lt;档位&gt;</code>，如 <code>qwen3.5-27b-fp8__L1</code></li></ol>
+<hr/>
+<h2>6. 怎么读报告</h2>
+<table><thead><tr><th>指标</th><th>红线</th></tr></thead><tbody>
+<tr><td>工具闭环 ToolAccLoose</td><td>&lt; 60% 不用</td></tr>
+<tr><td>误调率（A4）</td><td><strong>&gt; 5%（家庭音箱 &gt; 3%）淘汰</strong></td></tr>
+<tr><td>口语违规率</td><td><strong>&gt; 2% 淘汰</strong></td></tr>
+<tr><td>事实保真</td><td><strong>&lt; 98% 淘汰</strong></td></tr>
+<tr><td>空结果诚实</td><td>&lt; 95% 淘汰</td></tr>
+<tr><td>TTFT P95</td><td>&gt; 800 ms 淘汰（云侧）</td></tr>
+<tr><td>5 次一致率</td><td>&lt; 95% 查采样/缓存</td></tr>
+</tbody></table>
+<hr/>
+<h2>7. 常见坑</h2>
 <table><thead><tr><th>现象</th><th>原因</th><th>处理</th></tr></thead><tbody>
-<tr><td><code>invalid</code> 高</td><td>模型不支持原生 tool calling，只会输出文本</td><td>换 <code>tool_choice</code> 策略或改用「文本里吐 JSON」再解析的适配器</td></tr>
-<tr><td>A3 全 0</td><td>模型只调第一次工具就收尾</td><td>这是真实能力缺陷，别改判分放过它</td></tr>
-<tr><td><code>must_contain</code> 全不中</td><td>模型把数字换成中文（&quot;十八到二十三度&quot;）</td><td>属正常现象，但要与&quot;读法约定&quot;对齐：本评测要求保留阿拉伯数字</td></tr>
-<tr><td>TTFT 总是 None</td><td>走了非流式接口</td><td><code>run_model.py</code> 固定 <code>stream=True</code>，检查网关是否吞掉 SSE</td></tr>
-<tr><td>分数虚高</td><td>用 L0/L1 调过 prompt 后当最终成绩报</td><td>最终数字一律来自 L2；L1 只用于淘汰</td></tr>
+<tr><td><code>invalid</code> 高</td><td>模型不支持原生 tool calling</td><td>改文本吐 JSON 的适配器，或换模型</td></tr>
+<tr><td>A3 全 0</td><td>只调第一次工具就收尾</td><td>真实缺陷，不要放过</td></tr>
+<tr><td><code>must_contain</code> 全不中</td><td>模型把数字换成中文读法</td><td>本评测要求保留阿拉伯数字（便于 TTS 统一读法）</td></tr>
+<tr><td>TTFT 恒为 None</td><td>网关吞了 SSE</td><td>检查是否强制非流式</td></tr>
+<tr><td>分数虚高</td><td>用 L1 调 prompt 后当最终成绩</td><td>最终数字只来自 L2</td></tr>
 </tbody></table>
 <hr/>
-<h2>7. 目录约定</h2>
+<h2>8. 目录</h2>
 <pre><code>
-tasksets/     题集（可重建，含 sha256）
-predictions/  模型原始输出（含 TTFT）
-reports/      判分报告（md）
-tools/        build_taskset.py / run_model.py / score.py
-docs/         洞察与设计
-</code></pre>
-<p>数据与预测都不含密钥；<code>predictions/</code> 里带模型原始输出，对外发布前先确认没有内部 prompt。</p></body></html>
+tasksets/    home_L0/L1、phone_L0/L1、L0/L1（合并）
+predictions/ 模型输出（含 oracle / mockbad 夹具）
+reports/     判分报告（fixtures/ 下是两个夹具）
+tools/       build_taskset.py  run_model.py  score.py
+docs/        01 洞察 / 02 评测体系 / 03 本手册
+</code></pre></body></html>

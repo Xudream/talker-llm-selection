@@ -1,120 +1,240 @@
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-weather-9b5853b155", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "get_time", "args": {"city": "郑州"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-time-0b4e5c5c3f", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "get_exchange_rate", "args": {"from": "USD", "to": "CNY"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-exchange-9ae565364c", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "search_web", "args": {"query": "珠穆朗玛峰 高度"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-search-0b140136bd", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "郑州", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-weather-ca9bce397a", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "get_time", "args": {"city": "杭州"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-time-7293d80da3", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "get_exchange_rate", "args": {"from": "USD", "to": "CNY"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-exchange-9ae565364c", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "search_web", "args": {"query": "珠穆朗玛峰 高度"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-search-0b140136bd", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-weather-48a1cc7018", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "get_time", "args": {"city": "洛阳"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-time-0f42b9d7f3", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "get_exchange_rate", "args": {"from": "USD", "to": "CNY"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-exchange-9ae565364c", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "search_web", "args": {"query": "珠穆朗玛峰 高度"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-search-0b140136bd", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-weather-b507222961", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "get_time", "args": {"city": "杭州"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-time-7293d80da3", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "get_exchange_rate", "args": {"from": "USD", "to": "CNY"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-exchange-9ae565364c", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "search_web", "args": {"query": "珠穆朗玛峰 高度"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-search-0b140136bd", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "成都", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-weather-123bcc959b", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "get_time", "args": {"city": "郑州"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-time-0b4e5c5c3f", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "get_exchange_rate", "args": {"from": "USD", "to": "CNY"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-exchange-9ae565364c", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "search_web", "args": {"query": "珠穆朗玛峰 高度"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-search-0b140136bd", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "上海", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-weather-a3e2f3778c", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "get_time", "args": {"city": "北京"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-time-1c7492eda2", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "get_exchange_rate", "args": {"from": "USD", "to": "CNY"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-exchange-9ae565364c", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "search_web", "args": {"query": "珠穆朗玛峰 高度"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A1-search-0b140136bd", "model": "oracle", "axis": "A1"}
-{"text": "好的。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A2-reminder-9f457429ee", "model": "oracle", "axis": "A2"}
-{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "起风了"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A2-music-78679a22a3", "model": "oracle", "axis": "A2"}
-{"text": "好的。", "tool_calls": [{"name": "control_light", "args": {"room": "卧室", "on": false}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A2-light-7c9f102cb7", "model": "oracle", "axis": "A2"}
-{"text": "好的。", "tool_calls": [{"name": "set_ac", "args": {"mode": "cool", "temperature": 24}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A2-ac-f1b08aa3ec", "model": "oracle", "axis": "A2"}
-{"text": "好的。", "tool_calls": [{"name": "navigate_to", "args": {"destination": "最近的加油站"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A2-nav-17dc1ef2a0", "model": "oracle", "axis": "A2"}
-{"text": "好的。", "tool_calls": [{"name": "send_message", "args": {"contact": "老王", "content": "我晚点到"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A2-message-f530089f9f", "model": "oracle", "axis": "A2"}
-{"text": "好的。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A2-reminder-9f457429ee", "model": "oracle", "axis": "A2"}
-{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "海阔天空"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A2-music-b230782af1", "model": "oracle", "axis": "A2"}
-{"text": "好的。", "tool_calls": [{"name": "control_light", "args": {"room": "卧室", "on": false}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A2-light-7c9f102cb7", "model": "oracle", "axis": "A2"}
-{"text": "好的。", "tool_calls": [{"name": "set_ac", "args": {"mode": "cool", "temperature": 22}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A2-ac-15ea9f14e7", "model": "oracle", "axis": "A2"}
-{"text": "好的。", "tool_calls": [{"name": "navigate_to", "args": {"destination": "最近的加油站"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A2-nav-17dc1ef2a0", "model": "oracle", "axis": "A2"}
-{"text": "好的。", "tool_calls": [{"name": "send_message", "args": {"contact": "妈妈", "content": "我晚点到"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A2-message-428a8c70b3", "model": "oracle", "axis": "A2"}
-{"text": "好的。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A2-reminder-9f457429ee", "model": "oracle", "axis": "A2"}
-{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "晴天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A2-music-75e4b00426", "model": "oracle", "axis": "A2"}
-{"text": "好的。", "tool_calls": [{"name": "control_light", "args": {"room": "客厅", "on": false}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A2-light-0ff00c5af1", "model": "oracle", "axis": "A2"}
-{"text": "好的。", "tool_calls": [{"name": "set_ac", "args": {"mode": "cool", "temperature": 22}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A2-ac-15ea9f14e7", "model": "oracle", "axis": "A2"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "明天"}}, {"name": "set_ac", "args": {"mode": "cool", "temperature": 24}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A3-weather_then_ac-fdc059a5e2", "model": "oracle", "axis": "A3"}
-{"text": "好的。", "tool_calls": [{"name": "get_calendar", "args": {"date": "这周六"}}, {"name": "create_reminder", "args": {"content": "开会", "time": "提前半小时"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A3-calendar_then_remind-22a23360e4", "model": "oracle", "axis": "A3"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "明天"}}, {"name": "set_ac", "args": {"mode": "cool", "temperature": 24}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A3-weather_then_ac-fd136d6687", "model": "oracle", "axis": "A3"}
-{"text": "好的。", "tool_calls": [{"name": "get_calendar", "args": {"date": "这周六"}}, {"name": "create_reminder", "args": {"content": "开会", "time": "提前半小时"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-A3-calendar_then_remind-22a23360e4", "model": "oracle", "axis": "A3"}
-{"text": "好的。", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-A4-chitchat-442ed98473", "model": "oracle", "axis": "A4"}
-{"text": "请问你想放到哪个音箱？", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-A4-need_clarify-d710659eaa", "model": "oracle", "axis": "A4"}
-{"text": "好的。", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-A4-confirm_write-5585b0f6b0", "model": "oracle", "axis": "A4"}
-{"text": "好的。", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-A4-chitchat-ae4f4a84c1", "model": "oracle", "axis": "A4"}
-{"text": "请问你想放到哪个音箱？", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-A4-need_clarify-d710659eaa", "model": "oracle", "axis": "A4"}
-{"text": "好的。", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-A4-confirm_write-5bbb4651a2", "model": "oracle", "axis": "A4"}
-{"text": "好的。", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-A4-chitchat-130c0dc1ad", "model": "oracle", "axis": "A4"}
-{"text": "请问你想放到哪个音箱？", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-A4-need_clarify-e9cd9e8e6d", "model": "oracle", "axis": "A4"}
-{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-344b97fc61", "model": "oracle", "axis": "B"}
-{"text": "好的，5，12。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-757de71f25", "model": "oracle", "axis": "B"}
-{"text": "好的，5，12。", "tool_calls": [{"name": "get_weather", "args": {"city": "郑州", "date": "这周六"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-528b23b220", "model": "oracle", "axis": "B"}
-{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "西安", "date": "这周六"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-dc644c1894", "model": "oracle", "axis": "B"}
-{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "成都", "date": "这周六"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-f5556ff3f5", "model": "oracle", "axis": "B"}
-{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "成都", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-431f401a7e", "model": "oracle", "axis": "B"}
-{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "西安", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-cbef877eb0", "model": "oracle", "axis": "B"}
-{"text": "好的，26，31。", "tool_calls": [{"name": "get_weather", "args": {"city": "上海", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-9d74e89bf2", "model": "oracle", "axis": "B"}
-{"text": "好的，26，31。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-7c05d7a126", "model": "oracle", "axis": "B"}
-{"text": "好的，26，31。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-4ede430d3d", "model": "oracle", "axis": "B"}
-{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "成都", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-5df3c10008", "model": "oracle", "axis": "B"}
-{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "西安", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-cbef877eb0", "model": "oracle", "axis": "B"}
-{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "郑州", "date": "这周六"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-bd747abaf4", "model": "oracle", "axis": "B"}
-{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-ecf0665568", "model": "oracle", "axis": "B"}
-{"text": "好的，26，31。", "tool_calls": [{"name": "get_weather", "args": {"city": "郑州", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-2f07724faa", "model": "oracle", "axis": "B"}
-{"text": "好的，26，31。", "tool_calls": [{"name": "get_weather", "args": {"city": "西安", "date": "这周六"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-3ff1e8b4c0", "model": "oracle", "axis": "B"}
-{"text": "好的，26，31。", "tool_calls": [{"name": "get_weather", "args": {"city": "上海", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-96adb409b2", "model": "oracle", "axis": "B"}
-{"text": "好的，5，12。", "tool_calls": [{"name": "get_weather", "args": {"city": "西安", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-d24cdf86ad", "model": "oracle", "axis": "B"}
-{"text": "好的，5，12。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-757de71f25", "model": "oracle", "axis": "B"}
-{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "成都", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-5df3c10008", "model": "oracle", "axis": "B"}
-{"text": "好的，5，12。", "tool_calls": [{"name": "get_weather", "args": {"city": "成都", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-e48f8984b7", "model": "oracle", "axis": "B"}
-{"text": "好的，5，12。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-189039226a", "model": "oracle", "axis": "B"}
-{"text": "好的，26，31。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-9fea25f5de", "model": "oracle", "axis": "B"}
-{"text": "好的，26，31。", "tool_calls": [{"name": "get_weather", "args": {"city": "西安", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-B-narrate-d7e4e636ff", "model": "oracle", "axis": "B"}
-{"text": "好的，5，12。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-C-numbers-a8037c6bf9", "model": "oracle", "axis": "C"}
-{"text": "好的，没。", "tool_calls": [{"name": "get_calendar", "args": {"date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-C-empty-877504eb0f", "model": "oracle", "axis": "C"}
-{"text": "好的，没查到。", "tool_calls": [{"name": "get_exchange_rate", "args": {"from": "USD", "to": "CNY"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-C-timeout-8332358e42", "model": "oracle", "axis": "C"}
-{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-C-numbers-ea1dd0d609", "model": "oracle", "axis": "C"}
-{"text": "好的，没。", "tool_calls": [{"name": "get_calendar", "args": {"date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-C-empty-877504eb0f", "model": "oracle", "axis": "C"}
-{"text": "好的，没查到。", "tool_calls": [{"name": "get_exchange_rate", "args": {"from": "USD", "to": "CNY"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-C-timeout-8332358e42", "model": "oracle", "axis": "C"}
-{"text": "好的，5，12。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-C-numbers-a8037c6bf9", "model": "oracle", "axis": "C"}
-{"text": "好的，没。", "tool_calls": [{"name": "get_calendar", "args": {"date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-C-empty-877504eb0f", "model": "oracle", "axis": "C"}
-{"text": "好的，没查到。", "tool_calls": [{"name": "get_exchange_rate", "args": {"from": "USD", "to": "CNY"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-C-timeout-8332358e42", "model": "oracle", "axis": "C"}
-{"text": "好的，26，31。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-C-numbers-9f77f52f86", "model": "oracle", "axis": "C"}
-{"text": "好的，没。", "tool_calls": [{"name": "get_calendar", "args": {"date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-C-empty-877504eb0f", "model": "oracle", "axis": "C"}
-{"text": "好的，没查到。", "tool_calls": [{"name": "get_exchange_rate", "args": {"from": "USD", "to": "CNY"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-C-timeout-8332358e42", "model": "oracle", "axis": "C"}
-{"text": "好的，5，12。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-C-numbers-a8037c6bf9", "model": "oracle", "axis": "C"}
-{"text": "好的，没。", "tool_calls": [{"name": "get_calendar", "args": {"date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-C-empty-877504eb0f", "model": "oracle", "axis": "C"}
-{"text": "好的，没查到。", "tool_calls": [{"name": "get_exchange_rate", "args": {"from": "USD", "to": "CNY"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-C-timeout-8332358e42", "model": "oracle", "axis": "C"}
-{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-C-numbers-ea1dd0d609", "model": "oracle", "axis": "C"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-D-ellipsis-2a45648046", "model": "oracle", "axis": "D"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-D-correction-b54502393b", "model": "oracle", "axis": "D"}
-{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "晴天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-D-switch_topic-81839bb3b4", "model": "oracle", "axis": "D"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-D-ellipsis-2a45648046", "model": "oracle", "axis": "D"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-D-correction-b54502393b", "model": "oracle", "axis": "D"}
-{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "晴天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-D-switch_topic-81839bb3b4", "model": "oracle", "axis": "D"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-D-ellipsis-2a45648046", "model": "oracle", "axis": "D"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-D-correction-b54502393b", "model": "oracle", "axis": "D"}
-{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "晴天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-D-switch_topic-81839bb3b4", "model": "oracle", "axis": "D"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-D-ellipsis-2a45648046", "model": "oracle", "axis": "D"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-D-correction-b54502393b", "model": "oracle", "axis": "D"}
-{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "晴天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-D-switch_topic-81839bb3b4", "model": "oracle", "axis": "D"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-D-ellipsis-2a45648046", "model": "oracle", "axis": "D"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-D-correction-b54502393b", "model": "oracle", "axis": "D"}
-{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "晴天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-D-switch_topic-81839bb3b4", "model": "oracle", "axis": "D"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-D-ellipsis-2a45648046", "model": "oracle", "axis": "D"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-E-latency-1deba5c893", "model": "oracle", "axis": "E"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-E-latency-1deba5c893", "model": "oracle", "axis": "E"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-E-latency-1deba5c893", "model": "oracle", "axis": "E"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-E-latency-1deba5c893", "model": "oracle", "axis": "E"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-E-latency-1deba5c893", "model": "oracle", "axis": "E"}
-{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-E-latency-1deba5c893", "model": "oracle", "axis": "E"}
-{"text": "好的。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-F-consistency-7b2d47e0f0", "model": "oracle", "axis": "F"}
-{"text": "好的。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-F-consistency-7b2d47e0f0", "model": "oracle", "axis": "F"}
-{"text": "好的。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-F-consistency-7b2d47e0f0", "model": "oracle", "axis": "F"}
-{"text": "好的。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-F-consistency-7b2d47e0f0", "model": "oracle", "axis": "F"}
-{"text": "好的。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-F-consistency-7b2d47e0f0", "model": "oracle", "axis": "F"}
-{"text": "好的。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-F-consistency-7b2d47e0f0", "model": "oracle", "axis": "F"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-weather-f1b0336ff4", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_recipe", "args": {"dish": "番茄炒蛋"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-recipe-235e53d57b", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "起风了"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-music-76d0d6505b", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "郑州", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-weather_city-e808eead6f", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "family_announce", "args": {"content": "吃饭了"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-announce-4cdf3ab02d", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_recipe", "args": {"dish": "红烧肉"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-recipe2-c830ef510a", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-weather-52c001b415", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_recipe", "args": {"dish": "番茄炒蛋"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-recipe-235e53d57b", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "海阔天空"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-music-82fb924aa9", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-weather_city-7ae276cac1", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "family_announce", "args": {"content": "吃饭了"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-announce-4cdf3ab02d", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_recipe", "args": {"dish": "红烧肉"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-recipe2-c830ef510a", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "成都", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-weather-e90773e15f", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_recipe", "args": {"dish": "番茄炒蛋"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-recipe-235e53d57b", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "孤勇者"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-music-21c6dc1da3", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "郑州", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-weather_city-e808eead6f", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "family_announce", "args": {"content": "吃饭了"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-announce-4cdf3ab02d", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_recipe", "args": {"dish": "红烧肉"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-recipe2-c830ef510a", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-weather-a1ae976dbb", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_recipe", "args": {"dish": "红烧肉"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-recipe-cc82fefa6b", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "海阔天空"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-music-82fb924aa9", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "上海", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-weather_city-95eece02f1", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "family_announce", "args": {"content": "吃饭了"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-announce-4cdf3ab02d", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_recipe", "args": {"dish": "红烧肉"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A1-recipe2-c830ef510a", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "control_light", "args": {"room": "书房", "on": true, "level": 30}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A2-light-593d5d877a", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "set_ac", "args": {"mode": "cool", "temperature": 24}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A2-ac-4b2e3d966e", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "control_curtain", "args": {"room": "客厅", "action": "close"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A2-curtain-cebe12b279", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "control_vacuum", "args": {"mode": "clean", "room": "卧室"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A2-vacuum-766ca77c08", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00", "who": "我"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A2-reminder-487d14125b", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "control_light", "args": {"room": "书房", "on": false, "level": 0}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A2-light_off-ba59b58f4d", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "control_light", "args": {"room": "卧室", "on": true, "level": 30}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A2-light-df7beafa73", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "set_ac", "args": {"mode": "cool", "temperature": 22}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A2-ac-fad09af0d4", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "control_curtain", "args": {"room": "客厅", "action": "close"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A2-curtain-cebe12b279", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "control_vacuum", "args": {"mode": "clean", "room": "卧室"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A2-vacuum-766ca77c08", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00", "who": "我"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A2-reminder-487d14125b", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "control_light", "args": {"room": "书房", "on": false, "level": 0}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A2-light_off-ba59b58f4d", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "control_light", "args": {"room": "客厅", "on": true, "level": 30}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A2-light-256eeb8e5a", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "set_ac", "args": {"mode": "cool", "temperature": 26}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A2-ac-b1a2eef9e9", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}, {"name": "set_ac", "args": {"mode": "cool", "temperature": 24}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A3-weather_then_ac-2744212852", "model": "oracle", "axis": "A3"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}, {"name": "set_ac", "args": {"mode": "cool", "temperature": 24}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A3-weather_then_ac-2744212852", "model": "oracle", "axis": "A3"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}, {"name": "set_ac", "args": {"mode": "cool", "temperature": 24}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A3-weather_then_ac-2744212852", "model": "oracle", "axis": "A3"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "明天"}}, {"name": "set_ac", "args": {"mode": "cool", "temperature": 24}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A3-weather_then_ac-d50858fcbe", "model": "oracle", "axis": "A3"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "郑州", "date": "明天"}}, {"name": "set_ac", "args": {"mode": "cool", "temperature": 24}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A3-weather_then_ac-e4821322a8", "model": "oracle", "axis": "A3"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "明天"}}, {"name": "set_ac", "args": {"mode": "cool", "temperature": 24}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A3-weather_then_ac-128a7c1a28", "model": "oracle", "axis": "A3"}
+{"text": "好的。", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A4-chitchat-91232a86e8", "model": "oracle", "axis": "A4"}
+{"text": "请问你想放到哪个音箱？", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A4-need_clarify-66287c4e80", "model": "oracle", "axis": "A4"}
+{"text": "好的。", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A4-confirm_write-c209883b14", "model": "oracle", "axis": "A4"}
+{"text": "好的。", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A4-chitchat-91232a86e8", "model": "oracle", "axis": "A4"}
+{"text": "请问你想放到哪个音箱？", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A4-need_clarify-156902e3d6", "model": "oracle", "axis": "A4"}
+{"text": "好的。", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A4-confirm_write-c209883b14", "model": "oracle", "axis": "A4"}
+{"text": "好的。", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A4-chitchat-5ae479caea", "model": "oracle", "axis": "A4"}
+{"text": "请问你想放到哪个音箱？", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-A4-need_clarify-c6a5bf2c0e", "model": "oracle", "axis": "A4"}
+{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "郑州", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-ca527ffb8e", "model": "oracle", "axis": "B"}
+{"text": "好的，5，12。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-55e6d891e0", "model": "oracle", "axis": "B"}
+{"text": "好的，5，12。", "tool_calls": [{"name": "get_weather", "args": {"city": "郑州", "date": "这周六"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-e0def33ac0", "model": "oracle", "axis": "B"}
+{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "上海", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-d1b1b5b604", "model": "oracle", "axis": "B"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "这周六"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-6a7aa9faee", "model": "oracle", "axis": "B"}
+{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "成都", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-b7b0c50c68", "model": "oracle", "axis": "B"}
+{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-9ebe41bd5d", "model": "oracle", "axis": "B"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_weather", "args": {"city": "上海", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-6f8a88eaaf", "model": "oracle", "axis": "B"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-83ce5e3dd5", "model": "oracle", "axis": "B"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-10dc62e854", "model": "oracle", "axis": "B"}
+{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "成都", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-5e1e184c20", "model": "oracle", "axis": "B"}
+{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-bf2c96b6df", "model": "oracle", "axis": "B"}
+{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "这周六"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-f324403561", "model": "oracle", "axis": "B"}
+{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-c03c945226", "model": "oracle", "axis": "B"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_weather", "args": {"city": "郑州", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-cc7ad0a087", "model": "oracle", "axis": "B"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_weather", "args": {"city": "上海", "date": "这周六"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-1d8f3bed3f", "model": "oracle", "axis": "B"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "这周六"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-3c44565d96", "model": "oracle", "axis": "B"}
+{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "上海", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-d1b1b5b604", "model": "oracle", "axis": "B"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_weather", "args": {"city": "成都", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-50eed9b561", "model": "oracle", "axis": "B"}
+{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "成都", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-5e1e184c20", "model": "oracle", "axis": "B"}
+{"text": "好的，5，12。", "tool_calls": [{"name": "get_weather", "args": {"city": "成都", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-f33488a88e", "model": "oracle", "axis": "B"}
+{"text": "好的，5，12。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-f4dc8bc0c0", "model": "oracle", "axis": "B"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-7485862581", "model": "oracle", "axis": "B"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_weather", "args": {"city": "杭州", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-B-narrate-7485862581", "model": "oracle", "axis": "B"}
+{"text": "好的，5，12。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-C-numbers-f25f5177fa", "model": "oracle", "axis": "C"}
+{"text": "好的，没。", "tool_calls": [{"name": "get_recipe", "args": {"dish": "红烧肉"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-C-empty-7dc6ac1cf7", "model": "oracle", "axis": "C"}
+{"text": "好的，没查到。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-C-timeout-7785e3d206", "model": "oracle", "axis": "C"}
+{"text": "好的，18，23。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-C-numbers-366fa8ed52", "model": "oracle", "axis": "C"}
+{"text": "好的，没。", "tool_calls": [{"name": "get_recipe", "args": {"dish": "红烧肉"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-C-empty-7dc6ac1cf7", "model": "oracle", "axis": "C"}
+{"text": "好的，没查到。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-C-timeout-7785e3d206", "model": "oracle", "axis": "C"}
+{"text": "好的，5，12。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-C-numbers-f25f5177fa", "model": "oracle", "axis": "C"}
+{"text": "好的，没。", "tool_calls": [{"name": "get_recipe", "args": {"dish": "红烧肉"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-C-empty-7dc6ac1cf7", "model": "oracle", "axis": "C"}
+{"text": "好的，没查到。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-C-timeout-7785e3d206", "model": "oracle", "axis": "C"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-C-numbers-23cff99c98", "model": "oracle", "axis": "C"}
+{"text": "好的，没。", "tool_calls": [{"name": "get_recipe", "args": {"dish": "红烧肉"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-C-empty-7dc6ac1cf7", "model": "oracle", "axis": "C"}
+{"text": "好的，没查到。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-C-timeout-7785e3d206", "model": "oracle", "axis": "C"}
+{"text": "好的，5，12。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-C-numbers-f25f5177fa", "model": "oracle", "axis": "C"}
+{"text": "好的，没。", "tool_calls": [{"name": "get_recipe", "args": {"dish": "红烧肉"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-C-empty-7dc6ac1cf7", "model": "oracle", "axis": "C"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-D-ellipsis-ea9691d2be", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "control_light", "args": {"room": "卧室", "on": false, "level": 0}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-D-correction-c875a32a3e", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "晴天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-D-switch_topic-134ab5b921", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-D-ellipsis-ea9691d2be", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "control_light", "args": {"room": "卧室", "on": false, "level": 0}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-D-correction-c875a32a3e", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "晴天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-D-switch_topic-134ab5b921", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-D-ellipsis-ea9691d2be", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "control_light", "args": {"room": "卧室", "on": false, "level": 0}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-D-correction-c875a32a3e", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "晴天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-D-switch_topic-134ab5b921", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-D-ellipsis-ea9691d2be", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "control_light", "args": {"room": "卧室", "on": false, "level": 0}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-D-correction-c875a32a3e", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "晴天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-D-switch_topic-134ab5b921", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-D-ellipsis-ea9691d2be", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "control_light", "args": {"room": "卧室", "on": false, "level": 0}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-D-correction-c875a32a3e", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "晴天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-D-switch_topic-134ab5b921", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "后天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-D-ellipsis-ea9691d2be", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-E-latency-b9c5a37389", "model": "oracle", "axis": "E"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-E-latency-b9c5a37389", "model": "oracle", "axis": "E"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-E-latency-b9c5a37389", "model": "oracle", "axis": "E"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-E-latency-b9c5a37389", "model": "oracle", "axis": "E"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-E-latency-b9c5a37389", "model": "oracle", "axis": "E"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-E-latency-b9c5a37389", "model": "oracle", "axis": "E"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-E-latency-b9c5a37389", "model": "oracle", "axis": "E"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "洛阳", "date": "明天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-E-latency-b9c5a37389", "model": "oracle", "axis": "E"}
+{"text": "好的。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00", "who": "我"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-F-consistency-f0195d640f", "model": "oracle", "axis": "F"}
+{"text": "好的。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00", "who": "我"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-F-consistency-f0195d640f", "model": "oracle", "axis": "F"}
+{"text": "好的。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00", "who": "我"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-F-consistency-f0195d640f", "model": "oracle", "axis": "F"}
+{"text": "好的。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00", "who": "我"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-F-consistency-f0195d640f", "model": "oracle", "axis": "F"}
+{"text": "好的。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00", "who": "我"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-F-consistency-f0195d640f", "model": "oracle", "axis": "F"}
+{"text": "好的。", "tool_calls": [{"name": "create_reminder", "args": {"content": "起床", "time": "07:00", "who": "我"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-home-F-consistency-f0195d640f", "model": "oracle", "axis": "F"}
+{"text": "好的。", "tool_calls": [{"name": "read_notifications", "args": {"limit": 5}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-notifications-1ca5c3d3ce", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "郑州", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-weather-629f7573a1", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-eta-1a57fd2056", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "晴天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-music-6ed8f18103", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "summarize_notifications", "args": {"app": "短信"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-notify_summary-a6307f1dbb", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "read_notifications", "args": {"limit": 10}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-calendar_q-8480964a3b", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "read_notifications", "args": {"limit": 5}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-notifications-1ca5c3d3ce", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "成都", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-weather-b75de55519", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-eta-1a57fd2056", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "海阔天空"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-music-23ae96db99", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "summarize_notifications", "args": {"app": "飞书"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-notify_summary-ed878286bb", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "read_notifications", "args": {"limit": 10}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-calendar_q-8480964a3b", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "read_notifications", "args": {"limit": 5}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-notifications-1ca5c3d3ce", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-weather-8dfa7ce44f", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-eta-1a57fd2056", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "起风了"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-music-5c88c62de3", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "summarize_notifications", "args": {"app": "微信"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-notify_summary-bce3517297", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "read_notifications", "args": {"limit": 10}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-calendar_q-8480964a3b", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "read_notifications", "args": {"limit": 5}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-notifications-1ca5c3d3ce", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_weather", "args": {"city": "北京", "date": "今天"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-weather-8dfa7ce44f", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-eta-1a57fd2056", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "起风了"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-music-5c88c62de3", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "summarize_notifications", "args": {"app": "飞书"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-notify_summary-ed878286bb", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "read_notifications", "args": {"limit": 10}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A1-calendar_q-8480964a3b", "model": "oracle", "axis": "A1"}
+{"text": "好的。", "tool_calls": [{"name": "send_message", "args": {"app": "短信", "contact": "老王", "content": "我晚点到"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A2-message-c01e038eb5", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "create_calendar", "args": {"title": "会议", "time": "明天10:00"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A2-calendar-30a7b37031", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "navigate_to", "args": {"destination": "家", "mode": "driving"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A2-nav-f781b778e5", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "call_contact", "args": {"name": "老王"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A2-call-2f474181cd", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "机场"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A2-eta2-e8a3ea7db7", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "跑步歌单"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A2-music_play-020e910d58", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "send_message", "args": {"app": "飞书", "contact": "妈妈", "content": "我晚点到"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A2-message-b87ca26b77", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "create_calendar", "args": {"title": "会议", "time": "明天10:00"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A2-calendar-30a7b37031", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "navigate_to", "args": {"destination": "家", "mode": "driving"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A2-nav-f781b778e5", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "call_contact", "args": {"name": "妈妈"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A2-call-333d4b336f", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "机场"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A2-eta2-e8a3ea7db7", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "跑步歌单"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A2-music_play-020e910d58", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "send_message", "args": {"app": "短信", "contact": "妈妈", "content": "我晚点到"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A2-message-8c32a4633e", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "create_calendar", "args": {"title": "会议", "time": "明天10:00"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A2-calendar-30a7b37031", "model": "oracle", "axis": "A2"}
+{"text": "好的。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}, {"name": "send_message", "args": {"app": "微信", "contact": "老王", "content": "我会晚到"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A3-eta_then_message-f3c89fe626", "model": "oracle", "axis": "A3"}
+{"text": "好的。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}, {"name": "send_message", "args": {"app": "微信", "contact": "老王", "content": "我会晚到"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A3-eta_then_message-f3c89fe626", "model": "oracle", "axis": "A3"}
+{"text": "好的。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}, {"name": "send_message", "args": {"app": "微信", "contact": "老王", "content": "我会晚到"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A3-eta_then_message-f3c89fe626", "model": "oracle", "axis": "A3"}
+{"text": "好的。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}, {"name": "send_message", "args": {"app": "微信", "contact": "老王", "content": "我会晚到"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A3-eta_then_message-f3c89fe626", "model": "oracle", "axis": "A3"}
+{"text": "好的。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}, {"name": "send_message", "args": {"app": "微信", "contact": "老王", "content": "我会晚到"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A3-eta_then_message-f3c89fe626", "model": "oracle", "axis": "A3"}
+{"text": "好的。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}, {"name": "send_message", "args": {"app": "微信", "contact": "老王", "content": "我会晚到"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A3-eta_then_message-f3c89fe626", "model": "oracle", "axis": "A3"}
+{"text": "好的。", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A4-chitchat-add8961e93", "model": "oracle", "axis": "A4"}
+{"text": "请问你想放到哪个音箱？", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A4-need_clarify-25ebafdfd2", "model": "oracle", "axis": "A4"}
+{"text": "好的。", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A4-confirm_write-f23fe64563", "model": "oracle", "axis": "A4"}
+{"text": "好的。", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A4-chitchat-49f64e194b", "model": "oracle", "axis": "A4"}
+{"text": "请问你想放到哪个音箱？", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A4-need_clarify-856286d3d0", "model": "oracle", "axis": "A4"}
+{"text": "好的。", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A4-confirm_write-132a80391e", "model": "oracle", "axis": "A4"}
+{"text": "好的。", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A4-chitchat-add8961e93", "model": "oracle", "axis": "A4"}
+{"text": "请问你想放到哪个音箱？", "tool_calls": [], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-A4-need_clarify-25ebafdfd2", "model": "oracle", "axis": "A4"}
+{"text": "好的，18，23。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-962eb8903a", "model": "oracle", "axis": "B"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-32f6a814c0", "model": "oracle", "axis": "B"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-32f6a814c0", "model": "oracle", "axis": "B"}
+{"text": "好的，5，12。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-a31f57f958", "model": "oracle", "axis": "B"}
+{"text": "好的，18，23。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-962eb8903a", "model": "oracle", "axis": "B"}
+{"text": "好的，5，12。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-a31f57f958", "model": "oracle", "axis": "B"}
+{"text": "好的，5，12。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-a31f57f958", "model": "oracle", "axis": "B"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-32f6a814c0", "model": "oracle", "axis": "B"}
+{"text": "好的，18，23。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-962eb8903a", "model": "oracle", "axis": "B"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-32f6a814c0", "model": "oracle", "axis": "B"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-32f6a814c0", "model": "oracle", "axis": "B"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-32f6a814c0", "model": "oracle", "axis": "B"}
+{"text": "好的，5，12。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-a31f57f958", "model": "oracle", "axis": "B"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-32f6a814c0", "model": "oracle", "axis": "B"}
+{"text": "好的，5，12。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-a31f57f958", "model": "oracle", "axis": "B"}
+{"text": "好的，18，23。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-962eb8903a", "model": "oracle", "axis": "B"}
+{"text": "好的，18，23。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-962eb8903a", "model": "oracle", "axis": "B"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-32f6a814c0", "model": "oracle", "axis": "B"}
+{"text": "好的，18，23。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-962eb8903a", "model": "oracle", "axis": "B"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-32f6a814c0", "model": "oracle", "axis": "B"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-32f6a814c0", "model": "oracle", "axis": "B"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-32f6a814c0", "model": "oracle", "axis": "B"}
+{"text": "好的，5，12。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-a31f57f958", "model": "oracle", "axis": "B"}
+{"text": "好的，18，23。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-B-narrate_eta-962eb8903a", "model": "oracle", "axis": "B"}
+{"text": "好的，5，12。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-C-numbers-be2a2781a7", "model": "oracle", "axis": "C"}
+{"text": "好的，没。", "tool_calls": [{"name": "read_notifications", "args": {"limit": 5}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-C-empty-9b591dea67", "model": "oracle", "axis": "C"}
+{"text": "好的，没查到。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-C-timeout-594b02328e", "model": "oracle", "axis": "C"}
+{"text": "好的，26，31。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-C-numbers-c8741f0466", "model": "oracle", "axis": "C"}
+{"text": "好的，没。", "tool_calls": [{"name": "read_notifications", "args": {"limit": 5}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-C-empty-9b591dea67", "model": "oracle", "axis": "C"}
+{"text": "好的，没查到。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-C-timeout-594b02328e", "model": "oracle", "axis": "C"}
+{"text": "好的，18，23。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-C-numbers-9826043880", "model": "oracle", "axis": "C"}
+{"text": "好的，没。", "tool_calls": [{"name": "read_notifications", "args": {"limit": 5}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-C-empty-9b591dea67", "model": "oracle", "axis": "C"}
+{"text": "好的，没查到。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-C-timeout-594b02328e", "model": "oracle", "axis": "C"}
+{"text": "好的，5，12。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-C-numbers-be2a2781a7", "model": "oracle", "axis": "C"}
+{"text": "好的，没。", "tool_calls": [{"name": "read_notifications", "args": {"limit": 5}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-C-empty-9b591dea67", "model": "oracle", "axis": "C"}
+{"text": "好的，没查到。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-C-timeout-594b02328e", "model": "oracle", "axis": "C"}
+{"text": "好的，5，12。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-C-numbers-be2a2781a7", "model": "oracle", "axis": "C"}
+{"text": "好的，没。", "tool_calls": [{"name": "read_notifications", "args": {"limit": 5}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-C-empty-9b591dea67", "model": "oracle", "axis": "C"}
+{"text": "好的。", "tool_calls": [{"name": "navigate_to", "args": {"destination": "公司", "mode": "driving"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-D-ellipsis-e033d65ed0", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "send_message", "args": {"app": "微信", "contact": "张经理", "content": "我到了"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-D-correction-bf271ecf8c", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "起风了"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-D-switch_topic-9389cbfbb7", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "navigate_to", "args": {"destination": "公司", "mode": "driving"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-D-ellipsis-e033d65ed0", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "send_message", "args": {"app": "微信", "contact": "张经理", "content": "我到了"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-D-correction-bf271ecf8c", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "起风了"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-D-switch_topic-9389cbfbb7", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "navigate_to", "args": {"destination": "公司", "mode": "driving"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-D-ellipsis-e033d65ed0", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "send_message", "args": {"app": "微信", "contact": "张经理", "content": "我到了"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-D-correction-bf271ecf8c", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "起风了"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-D-switch_topic-9389cbfbb7", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "navigate_to", "args": {"destination": "公司", "mode": "driving"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-D-ellipsis-e033d65ed0", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "send_message", "args": {"app": "微信", "contact": "张经理", "content": "我到了"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-D-correction-bf271ecf8c", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "起风了"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-D-switch_topic-9389cbfbb7", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "navigate_to", "args": {"destination": "公司", "mode": "driving"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-D-ellipsis-e033d65ed0", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "send_message", "args": {"app": "微信", "contact": "张经理", "content": "我到了"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-D-correction-bf271ecf8c", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "play_music", "args": {"song": "起风了"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-D-switch_topic-9389cbfbb7", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "navigate_to", "args": {"destination": "公司", "mode": "driving"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-D-ellipsis-e033d65ed0", "model": "oracle", "axis": "D"}
+{"text": "好的。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-E-latency-e2fffe8d57", "model": "oracle", "axis": "E"}
+{"text": "好的。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-E-latency-e2fffe8d57", "model": "oracle", "axis": "E"}
+{"text": "好的。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-E-latency-e2fffe8d57", "model": "oracle", "axis": "E"}
+{"text": "好的。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-E-latency-e2fffe8d57", "model": "oracle", "axis": "E"}
+{"text": "好的。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-E-latency-e2fffe8d57", "model": "oracle", "axis": "E"}
+{"text": "好的。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-E-latency-e2fffe8d57", "model": "oracle", "axis": "E"}
+{"text": "好的。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-E-latency-e2fffe8d57", "model": "oracle", "axis": "E"}
+{"text": "好的。", "tool_calls": [{"name": "get_route_eta", "args": {"destination": "公司"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-E-latency-e2fffe8d57", "model": "oracle", "axis": "E"}
+{"text": "好的。", "tool_calls": [{"name": "create_calendar", "args": {"title": "会议", "time": "明天10:00"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-F-consistency-d701b57e31", "model": "oracle", "axis": "F"}
+{"text": "好的。", "tool_calls": [{"name": "create_calendar", "args": {"title": "会议", "time": "明天10:00"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-F-consistency-d701b57e31", "model": "oracle", "axis": "F"}
+{"text": "好的。", "tool_calls": [{"name": "create_calendar", "args": {"title": "会议", "time": "明天10:00"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-F-consistency-d701b57e31", "model": "oracle", "axis": "F"}
+{"text": "好的。", "tool_calls": [{"name": "create_calendar", "args": {"title": "会议", "time": "明天10:00"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-F-consistency-d701b57e31", "model": "oracle", "axis": "F"}
+{"text": "好的。", "tool_calls": [{"name": "create_calendar", "args": {"title": "会议", "time": "明天10:00"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-F-consistency-d701b57e31", "model": "oracle", "axis": "F"}
+{"text": "好的。", "tool_calls": [{"name": "create_calendar", "args": {"title": "会议", "time": "明天10:00"}}], "ttft_ms": 0, "total_ms": 0, "id": "talker-phone-F-consistency-d701b57e31", "model": "oracle", "axis": "F"}
