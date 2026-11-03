@@ -92,6 +92,7 @@ def main():
     ttft = []
     consistency = defaultdict(list)
     n_invalid_json = sum(1 for p in preds.values() if p.get("error"))
+    n_official = 0
     total = len([r for r in rows if r["id"] in preds])
 
     for row in rows:
@@ -100,6 +101,9 @@ def main():
             continue
         gold = row.get("gold") or {}
         axis = row["axis"]
+        if row.get("score_by") == "official":
+            n_official += 1
+            continue
         text = p.get("text") or ""
         calls = p.get("tool_calls") or []
 
@@ -214,7 +218,7 @@ def main():
         verdict = "待定"
 
     lines = [f"# 判分报告：{a.pred}", "",
-             f"- 样本 {metrics['样本']}｜缺失预测 {metrics['缺失预测']}",
+             f"- 样本 {metrics['样本']}｜缺失预测 {metrics['缺失预测']}｜公开集待官方判分 {n_official}",
              f"- **结论：{verdict}**｜加权得分 {score:.1f}" if score == score else f"- **结论：{verdict}**", "",
              "## 六轴指标", "",
              "| 指标 | 数值 | 95% CI |", "|---|---:|---|"]

@@ -1,0 +1,134 @@
+<!doctype html><html lang='zh-CN'><head><meta charset='utf-8'><title>04-尺子1接入清单</title><style>
+body{font-family:-apple-system,"PingFang SC","Helvetica Neue",sans-serif;max-width:1080px;margin:32px auto;padding:0 20px;line-height:1.65;color:#1f2328;background:#fff}
+h1{font-size:26px;border-bottom:2px solid #e5e7eb;padding-bottom:8px}
+h2{font-size:21px;margin-top:32px;border-left:4px solid #2563eb;padding-left:10px}
+h3{font-size:17px;margin-top:22px;color:#111827}
+h4{font-size:15px;color:#374151}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:13.5px}
+th,td{border:1px solid #d1d5db;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f3f4f6;font-weight:600}
+code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:12.5px}
+pre{background:#0f172a;color:#e2e8f0;padding:14px;border-radius:8px;overflow-x:auto;font-size:12.5px}
+pre code{background:none;color:inherit;padding:0}
+blockquote{border-left:4px solid #cbd5e1;margin:10px 0;padding:2px 14px;color:#4b5563}
+hr{border:none;border-top:1px solid #e5e7eb;margin:26px 0}
+</style></head><body><h1>尺子1 接入清单（公开集）</h1>
+<p>&gt; 目标：把五个公开集跑成一张可比的表，用于<strong>淘汰</strong>与<strong>摸高</strong>，不用于定选。</p>
+<p>&gt; 原则：<strong>能直接用官方 harness 的，绝不自己重写判分</strong>；我们的脚本只做抽样与格式转换。</p>
+<hr/>
+<h2>1. 五个集与职责</h2>
+<table><thead><tr><th>集</th><th>仓库</th><th>覆盖</th><th>我们怎么用</th><th>抽样</th></tr></thead><tbody>
+<tr><td><strong>BFCL v4</strong></td><td><code>github.com/ShishirPatil/gorilla</code>（<code>berkeley-function-call-leaderboard/</code>）</td><td>单轮 AST、并行、多轮、幻觉、Latency</td><td>主淘汰线</td><td>5 个文件 × 150 ≈ 600（另有 150 幻觉）</td></tr>
+<tr><td><strong>τ²-bench</strong></td><td><code>github.com/sierra-research/tau2-bench</code></td><td>多轮闭环 + 双控（用户/系统）</td><td>两步闭环保守估计</td><td>retail / airline / telecom 各 15 任务</td></tr>
+<tr><td><strong>ACEBench</strong></td><td><code>github.com/chenchen0103/ACEBench</code>（arXiv:2501.12851）</td><td>中文工具调用</td><td>中文说法对照</td><td>300</td></tr>
+<tr><td><strong>IFEval</strong></td><td><code>github.com/google-research/google-research/tree/master/instruction_following_eval</code></td><td>25 类可验证约束</td><td>格式/长度底线</td><td>全量 541（便宜）</td></tr>
+<tr><td><strong>HaluEval-zh / CMMLU</strong></td><td>HuggingFace 公开集</td><td>幻觉倾向 / 中文常识</td><td>反向筛除 + 闲聊兜底</td><td>各 200</td></tr>
+</tbody></table>
+<p>合计约 1,750 次调用/模型；云 API 成本 &lt; ¥60/模型【估算】。</p>
+<hr/>
+<h2>2. BFCL v4（主淘汰线）</h2>
+<h3>2.1 数据格式先搞清楚</h3>
+<ul><li>数据文件是 <strong>JSONL</strong>（每行一个对象），不是 JSON 数组——用 <code>json.load</code> 会报 <code>Extra data</code></li><li>每个对象：<code>{id, question: [[{role,content}...]], function: [{name,description,parameters}]}</code></li><li>答案在 <code>data/possible_answer/</code> 下，形如 <code>[{func_name: {arg: [可接受值1, 可接受值2]}}]</code></li><li><strong>注意</strong>：gold 是&quot;可接受值集合&quot;，不是单值 → 我们的 <code>score.py</code> 只能做快比，正式分必须用官方 AST</li></ul>
+<h3>2.2 抽样 + 转格式（本仓库脚本）</h3>
+<pre><code>
+# 需要代理时带上 HTTPS_PROXY
+HTTPS_PROXY=http://127.0.0.1:7890 python3 tools/fetch_public_sets.py \
+  --set bfcl_v4 --per-file 150 --out tasksets/public_bfcl_v4.jsonl
+</code></pre>
+<p>产出字段（与尺子2 同构，可直接喂 <code>run_model.py</code>）：</p>
+<table><thead><tr><th>字段</th><th>说明</th></tr></thead><tbody>
+<tr><td><code>axis</code></td><td>A1（单轮）/ A2（并行）/ A4（幻觉irrelevance）/ D（多轮）</td></tr>
+<tr><td><code>official_id</code></td><td>官方 id，用于把官方分数按 id 回填</td></tr>
+<tr><td><code>gold.official_answer</code></td><td>官方可接受值集合（原样保留）</td></tr>
+<tr><td><code>score_by</code></td><td><code>official</code>（用 AST 判）/ <code>local</code>（幻觉切面，本地可判）</td></tr>
+</tbody></table>
+<h3>2.3 官方判分（正式分数）</h3>
+<pre><code>
+git clone https://github.com/ShishirPatil/gorilla.git
+cd gorilla/berkeley-function-call-leaderboard
+pip install -e .
+
+# 指向自家端点（OpenAI 兼容）
+bfcl generate --model &lt;model-name&gt; \
+  --register-config path/to/config.json \
+  --result-dir ./result
+bfcl evaluate --model &lt;model-name&gt; --test-category simple_python,multiple,parallel,irrelevance,multi_turn_base
+</code></pre>
+<p><code>config.json</code> 模板：</p>
+<pre><code>
+{&quot;&lt;model-name&gt;&quot;: {&quot;model_name&quot;: &quot;&lt;served-model-name&gt;&quot;,
+                  &quot;base_url&quot;: &quot;http://127.0.0.1:8000/v1&quot;,
+                  &quot;api_key&quot;: &quot;dummy&quot;,
+                  &quot;temperature&quot;: 0.0}}
+</code></pre>
+<p>产出：<code>result/&lt;model&gt;/BFCL_v4_&lt;category&gt;_score.json</code>，其中含 <code>accuracy</code>、<code>correct_count</code>、<code>total_count</code>。</p>
+<h3>2.4 门槛</h3>
+<table><thead><tr><th>类别</th><th>门槛</th></tr></thead><tbody>
+<tr><td>单轮（simple + multiple）</td><td>≥ 75%</td></tr>
+<tr><td>多轮 base</td><td>≥ 55%</td></tr>
+<tr><td>irrelevance（该拒未拒）</td><td>≤ 15%</td></tr>
+<tr><td>并行（如果 Talker 用到）</td><td>≥ 65%</td></tr>
+</tbody></table>
+<hr/>
+<h2>3. τ²-bench（两步闭环）</h2>
+<pre><code>
+git clone https://github.com/sierra-research/tau2-bench &amp;&amp; cd tau2-bench
+pip install -e .
+# 每域只跑 15 个任务
+tau2 run --domain retail  --agent-llm &lt;model&gt; --user-llm &lt;model&gt; --num-tasks 15
+tau2 run --domain airline --agent-llm &lt;model&gt; --user-llm &lt;model&gt; --num-tasks 15
+tau2 run --domain telecom --agent-llm &lt;model&gt; --user-llm &lt;model&gt; --num-tasks 15
+</code></pre>
+<p>判分用官方 simulator 的打分（<code>reward</code>/<code>success</code>），<strong>不要用我们的 score.py</strong>。</p>
+<p>门槛：三域平均闭环成功率 ≥ 40%（公开集是客服域，低于业务域，门槛放低）。</p>
+<hr/>
+<h2>4. ACEBench（中文工具调用）</h2>
+<pre><code>
+git clone https://github.com/chenchen0103/ACEBench &amp;&amp; cd ACEBench
+pip install -r requirements.txt
+# 按其 README 指定模型与 API 配置后运行；只取 normal / special 两个子集各 150 条
+</code></pre>
+<p>判分：官方脚本输出的准确率。</p>
+<p>门槛：≥ 70%。</p>
+<hr/>
+<h2>5. IFEval（约束遵循）</h2>
+<pre><code>
+git clone https://github.com/google-research/google-research.git
+cd google-research/instruction_following_eval
+python3 instruction_following_eval/run_eval.py \
+  --input_data=instruction_following_eval/input_data.jsonl \
+  --input_response_data=&lt;our_responses.jsonl&gt; \
+  --output_dir=./out
+</code></pre>
+<ul><li>541 条全跑；产出 <code>strict</code> 与 <code>loose</code> 两个准确率</li><li>门槛：strict ≥ 80%</li></ul>
+<p>&gt; 这 541 条与&quot;口语化&quot;无关（它测的是字数/格式/禁用词），口语约束在尺子2 的 B 轴里。</p>
+<hr/>
+<h2>6. HaluEval-zh / CMMLU（辅助）</h2>
+<table><thead><tr><th>集</th><th>抽样</th><th>用法</th><th>门槛</th></tr></thead><tbody>
+<tr><td>HaluEval-zh</td><td>200</td><td>看&quot;该说不知道时是否编&quot;</td><td>幻觉承认率 ≥ 60%</td></tr>
+<tr><td>CMMLU</td><td>200</td><td>闲聊常识兜底</td><td>≥ 65%</td></tr>
+</tbody></table>
+<p>这两个只做参考，<strong>不进淘汰线</strong>——分布离业务太远。</p>
+<hr/>
+<h2>7. 结果汇总表（统一格式）</h2>
+<p>每个模型跑完后，把官方分填进这张表（放在 <code>reports/public__&lt;model&gt;.md</code>）：</p>
+<table><thead><tr><th>指标</th><th>数值</th><th>门槛</th><th>是否过线</th></tr></thead><tbody>
+<tr><td>BFCL 单轮 AST</td><td>—</td><td>≥75%</td><td>—</td></tr>
+<tr><td>BFCL 多轮</td><td>—</td><td>≥55%</td><td>—</td></tr>
+<tr><td>BFCL irrelevance（该拒未拒）</td><td>—</td><td>≤15%</td><td>—</td></tr>
+<tr><td>τ² retail / airline / telecom</td><td>—</td><td>平均 ≥40%</td><td>—</td></tr>
+<tr><td>ACEBench</td><td>—</td><td>≥70%</td><td>—</td></tr>
+<tr><td>IFEval strict</td><td>—</td><td>≥80%</td><td>—</td></tr>
+<tr><td>HaluEval-zh 承认率</td><td>—</td><td>≥60%</td><td>—</td></tr>
+<tr><td>CMMLU</td><td>—</td><td>≥65%</td><td>—</td></tr>
+<tr><td>结论</td><td>淘汰 / 进尺子2</td><td>—</td><td>—</td></tr>
+</tbody></table>
+<hr/>
+<h2>8. 执行顺序（一个模型约 3–4 小时，含装环境）</h2>
+<ol><li><code>fetch_public_sets.py</code> 抽 BFCL → <code>run_model.py</code> 跑本地快比（30 分钟，先看有没有格式崩）</li><li>装 BFCL harness → 跑正式 AST（1 小时）</li><li>τ² / ACEBench / IFEval（可选并行，1.5 小时）</li><li>填结果表 → 决定进不进尺子2</li></ol>
+<h2>9. 三个坑</h2>
+<table><thead><tr><th>坑</th><th>表现</th><th>处理</th></tr></thead><tbody>
+<tr><td>把 JSONL 当 JSON 读</td><td><code>Extra data: line 2 column 1</code></td><td>逐行 <code>json.loads</code>（脚本已处理）</td></tr>
+<tr><td>拿 gold 单值比对</td><td>全错，但模型其实对</td><td>BFCL gold 是&quot;可接受值集合&quot;，必须走官方 AST</td></tr>
+<tr><td>用我们的 score.py 出正式分</td><td>分数偏低且不可对外</td><td>正式分只认官方 harness；我们的脚本只做抽样与冒烟</td></tr>
+</tbody></table></body></html>

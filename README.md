@@ -27,13 +27,17 @@ Talker 层 LLM 选型研究：**业界洞察 + 两把尺子（公开集 / 业务
 |---|---|
 | `docs/01-业界方案洞察.md` | 开源轨候选池（9B/27B/122B-A10B/V4-Flash）、闭源 SOTA 摸高轨、场景差异、时延预算、榜单结构、五条启示 |
 | `docs/02-Talker-LLM评测体系.md` | 尺子1 公开集映射与抽样、尺子2 业务集（两场景工具集、六轴、配额、判分、硬门槛、三态结论）、两把尺子的串联流程、成本 |
-| `docs/03-评测执行手册.md` | 三步跑通、尺子1 官方入口、自检夹具、加候选、读报告、常见坑 |
+| `docs/03-评测执行手册.md` | 三步跑通、自检夹具、加候选、读报告、常见坑 |
+| `docs/04-尺子1接入清单.md` | 五个公开集的仓库、抽样、官方 harness 命令、判分归属、门槛、结果汇总表模板、三个坑 |
 
 ## 工装
 
 ```bash
 # 尺子2 题集：场景 home / phone / both，档位 L0 / L1 / L2
 python3 tools/build_taskset.py --scene both --tier L1 --out tasksets/L1.jsonl
+
+# 尺子1 题集：从 BFCL v4 抽样并转成统一格式（750 条）
+python3 tools/fetch_public_sets.py --per-file 150 --out tasksets/public_bfcl_v4.jsonl
 
 # 跑模型（OpenAI 兼容，原生 tool calling，流式测 TTFT）
 python3 tools/run_model.py --taskset tasksets/L1.jsonl --model qwen-plus \
@@ -51,8 +55,8 @@ python3 tools/score.py --taskset tasksets/L1.jsonl \
 
 ```
 docs/        洞察 / 评测体系 / 执行手册
-tools/       build_taskset.py  run_model.py  score.py
-tasksets/    home_L0/L1、phone_L0/L1、合并 L0/L1（sha256 固定）
+tools/       build_taskset.py  run_model.py  score.py  fetch_public_sets.py
+tasksets/    home_L0/L1、phone_L0/L1、合并 L0/L1、public_bfcl_v4（750 条）
 predictions/ 模型输出 + 两个自检夹具
 reports/     判分报告
 ```

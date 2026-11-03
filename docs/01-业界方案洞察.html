@@ -42,14 +42,23 @@ hr{border:none;border-top:1px solid #e5e7eb;margin:26px 0}
 <h2>3. 两轨候选池</h2>
 <h3>3.1 开放权重轨（实际选型池）</h3>
 <table><thead><tr><th>模型</th><th>参数</th><th>许可</th><th>单卡可行性</th><th>定位</th></tr></thead><tbody>
+<tr><td><strong>Qwen3.5-4B</strong></td><td>4B dense</td><td>Apache-2.0</td><td>1×A10/L4 轻松，单卡可跑多实例</td><td><strong>低成本高并发档</strong>；Intelligence Index 27（&lt;5B 最强）【第三方】</td></tr>
 <tr><td><strong>Qwen3.5-9B</strong></td><td>9B dense</td><td>Apache-2.0</td><td>1×A10/L20 可跑 FP8</td><td>云侧主力基线（BFCL-V4 66.1 / τ² 79.1）【官方】</td></tr>
 <tr><td><strong>Qwen3.5-27B</strong></td><td>27B dense</td><td>Apache-2.0</td><td>1×L40S/H20</td><td>质量档，工具成功率上探</td></tr>
-<tr><td><strong>Qwen3.5-122B-A10B</strong></td><td>122B MoE（激活 10B）</td><td>Apache-2.0</td><td>多卡（有 NVFP4 部署配方）</td><td>开源天花板档【官方】</td></tr>
+<tr><td><strong>Qwen3.5-122B-A10B</strong></td><td>122B MoE（激活 10B）</td><td>Apache-2.0</td><td>多卡（有 NVFP4 配方）</td><td>开源天花板档【官方】</td></tr>
+<tr><td><strong>Qwen3-4B-Instruct-2507</strong></td><td>4B</td><td>Apache-2.0</td><td>1×L4/A10</td><td>Qwen3 代主力小档，端云都在用，作为<strong>代际对照</strong></td></tr>
+<tr><td><strong>Qwen3-8B</strong></td><td>8B</td><td>Apache-2.0</td><td>1×A10</td><td>上一代云侧常用档，与 3.5-9B 直接对比</td></tr>
+<tr><td><strong>Qwen3-14B</strong></td><td>14B</td><td>Apache-2.0</td><td>1×A10/L20</td><td>与 3.5-9B 交叉验证&quot;代际还是尺寸更重要&quot;</td></tr>
+<tr><td><strong>Qwen3-32B</strong></td><td>32B</td><td>Apache-2.0</td><td>1×L40S/H20</td><td>上一代高质量档</td></tr>
+<tr><td><strong>Qwen3-30B-A3B</strong></td><td>30B MoE（激活 3B）</td><td>Apache-2.0</td><td>1×A10 可行（MoE 省算力）</td><td>高吞吐档，适合并发成本敏感场景</td></tr>
+<tr><td><strong>Qwen3-235B-A22B</strong></td><td>235B MoE</td><td>Apache-2.0</td><td>多机</td><td>上一代开源天花板，仅作参考</td></tr>
 <tr><td><strong>DeepSeek-V4-Flash</strong></td><td>小档</td><td>见模型卡</td><td>单机多卡</td><td>低价高并发替代</td></tr>
-<tr><td><strong>DeepSeek-V4-Pro</strong></td><td>1T 级 MoE</td><td>Apache-2.0（官方确认开源）</td><td>多机</td><td>只作参考，不实采</td></tr>
+<tr><td><strong>DeepSeek-V4-Pro</strong></td><td>1T 级 MoE</td><td>Apache-2.0</td><td>多机</td><td>只作参考，不实采</td></tr>
 <tr><td>Kimi K3</td><td>2.8T MoE</td><td>开放权重</td><td>不现实</td><td>仅作能力参照</td></tr>
 <tr><td>GLM 系（版本待核）</td><td>—</td><td>待核</td><td>—</td><td>补齐国产对照</td></tr>
 </tbody></table>
+<p><strong>为什么把 4B 和 Qwen3 代一起放进来</strong>：</p>
+<ol><li><strong>4B 是云侧真实存在的高性价比档</strong>。前一版只列 ≥9B，是按&quot;单卡 9B 起&quot;的思路切的，遗漏了 4B——它在云上可以单卡多实例、并发成本低一档，且 Qwen3.5-4B 的 Intelligence Index 27 已经超过多数 7B 级模型。</li><li><strong>Qwen3 代必须留对照</strong>。3.5 与 3 的差是&quot;代际红利&quot;，如果不放 Qwen3-8B/14B，就无法回答&quot;多花算力买 27B，还是换 3.5-9B 更划算&quot;这类问题；<code>Qwen3-30B-A3B</code> 还能验证 MoE 在并发场景的成本优势。</li><li>候选池因此分成 <strong>小档（4B）/ 主力档（8–9B）/ 质量档（14–32B）/ MoE 档 / 天花板档</strong>，评测按档位批量出结论，而不是逐个模型排队。</li></ol>
 <p>选型实操建议：<strong>只把&quot;能在自己机房单机/双机跑起来&quot;的模型列进候选</strong>。9B / 27B / 122B-A10B / V4-Flash 这四档足够覆盖价格-质量曲线；V4-Pro 与 K3 用来回答&quot;开源到底能到多高&quot;，不进评测排期。</p>
 <h3>3.2 闭源 SOTA 轨（摸高，不参与选型）</h3>
 <table><thead><tr><th>模型</th><th>用途</th></tr></thead><tbody>
