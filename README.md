@@ -11,6 +11,7 @@ Talker 层 LLM 选型研究：**业界洞察 + 两把尺子（公开集 / 业务
 | 闭源 SOTA 的领先在多轮工具与长上下文，不在单轮查询 | BFCL v4：Overall 77.47 / 单轮 88.58 / 多轮 73.76 |
 | 查询必须走工具，任何模型都不能靠参数知识 | 小模型幻觉率 80–82% |
 | 时延瓶颈是判停（200–800 ms）而非 LLM（200–1000 ms） | 级联链路区间汇总 |
+| **公开集不覆盖"口语化"** | VoiceBench 判内容不判风格；LCCC 是语料不是评测集 → 尺子1 只能规则下限筛除，定选靠尺子2 |
 | 家庭音箱与手机助手差异在声学与工具集，不在模型能力 | 两套 schema，混用即失真 |
 
 ## 两把尺子
@@ -28,7 +29,7 @@ Talker 层 LLM 选型研究：**业界洞察 + 两把尺子（公开集 / 业务
 | `docs/01-业界方案洞察.md` | 开源轨候选池（9B/27B/122B-A10B/V4-Flash）、闭源 SOTA 摸高轨、场景差异、时延预算、榜单结构、五条启示 |
 | `docs/02-Talker-LLM评测体系.md` | 尺子1 公开集映射与抽样、尺子2 业务集（两场景工具集、六轴、配额、判分、硬门槛、三态结论）、两把尺子的串联流程、成本 |
 | `docs/03-评测执行手册.md` | 三步跑通、自检夹具、加候选、读报告、常见坑 |
-| `docs/04-尺子1接入清单.md` | 五个公开集的仓库、抽样、官方 harness 命令、判分归属、门槛、结果汇总表模板、三个坑 |
+| `docs/04-尺子1接入清单.md` | 六个公开集的仓库、抽样、官方 harness 命令、判分归属、门槛；口语化（B' 轴）只够下限筛除的说明；结果汇总表模板；三个坑 |
 
 ## 工装
 
@@ -55,7 +56,7 @@ python3 tools/score.py --taskset tasksets/L1.jsonl \
 
 ```
 docs/        洞察 / 评测体系 / 执行手册
-tools/       build_taskset.py  run_model.py  score.py  fetch_public_sets.py
+tools/       build_taskset.py  run_model.py  score.py  fetch_public_sets.py  style_check.py
 tasksets/    home_L0/L1、phone_L0/L1、合并 L0/L1、public_bfcl_v4（750 条：本地 600 + 官方 harness 150）
 predictions/ 模型输出 + 两个自检夹具
 reports/     判分报告

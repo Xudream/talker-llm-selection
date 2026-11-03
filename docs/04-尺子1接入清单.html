@@ -23,6 +23,8 @@ hr{border:none;border-top:1px solid #e5e7eb;margin:26px 0}
 <tr><td><strong>ACEBench</strong></td><td><code>github.com/chenchen0103/ACEBench</code>（arXiv:2501.12851）</td><td>中文工具调用</td><td>中文说法对照</td><td>300</td></tr>
 <tr><td><strong>IFEval</strong></td><td><code>github.com/google-research/google-research/tree/master/instruction_following_eval</code></td><td>25 类可验证约束</td><td>格式/长度底线</td><td>全量 541（便宜）</td></tr>
 <tr><td><strong>HaluEval-zh / CMMLU</strong></td><td>HuggingFace 公开集</td><td>幻觉倾向 / 中文常识</td><td>反向筛除 + 闲聊兜底</td><td>各 200</td></tr>
+<tr><td><strong>VoiceBench</strong></td><td><code>github.com/matthewcym/VoiceBench</code>（TACL 2026）</td><td>语音提问 → 回答质量</td><td>语音场景输入理解</td><td>按其子集跑，取 200</td></tr>
+<tr><td><strong>LCCC / CDial-GPT</strong></td><td><code>github.com/thu-coai/CDial-GPT</code></td><td>中文口语对话语料</td><td>口语风格参照（不是评测集）</td><td>取 20 万句建 2-gram</td></tr>
 </tbody></table>
 <p>合计约 1,750 次调用/模型；云 API 成本 &lt; ¥60/模型【估算】。</p>
 <hr/>
@@ -41,6 +43,8 @@ HTTPS_PROXY=http://127.0.0.1:7890 python3 tools/fetch_public_sets.py \
 <tr><td><code>official_id</code></td><td>官方 id，用于把官方分数按 id 回填</td></tr>
 <tr><td><code>gold.official_answer</code></td><td>官方可接受值集合（原样保留）</td></tr>
 <tr><td><code>score_by</code></td><td><code>official</code>（用 AST 判）/ <code>local</code>（幻觉切面，本地可判）</td></tr>
+<tr><td><code>meta.run_local</code></td><td>多轮条目为 <code>false</code>：它的工具以 <code>involved_classes</code>（如 TwitterAPI）形式给出，本地跑不了，必须由官方 harness 解析</td></tr>
+<tr><td><code>meta.involved_classes</code></td><td>多轮样本用到的工具类，便于核对</td></tr>
 </tbody></table>
 <h3>2.3 官方判分（正式分数）</h3>
 <pre><code>
@@ -110,6 +114,29 @@ python3 instruction_following_eval/run_eval.py \
 </tbody></table>
 <p>这两个只做参考，<strong>不进淘汰线</strong>——分布离业务太远。</p>
 <hr/>
+<h2>6.5 口语化（B&#x27; 轴）：公开集只够做下限筛除</h2>
+<p><strong>先说结论：没有现成的&quot;口语化输出&quot;公开评测集。</strong></p>
+<table><thead><tr><th>候选</th><th>实际情况</th><th>能怎么用</th></tr></thead><tbody>
+<tr><td>VoiceBench</td><td>47 个模型的语音助手榜，判&quot;回答内容对不对&quot;</td><td>语音输入理解的旁证，<strong>不判口语风格</strong></td></tr>
+<tr><td>LCCC / CDial-GPT</td><td>中文口语对话<strong>语料</strong>，不是评测集</td><td>当口语风格的参照分布（n-gram 似然）</td></tr>
+<tr><td>IFEval</td><td>25 类可验证约束（字数/格式/禁用词）</td><td>但不含&quot;口语化&quot;，只覆盖结构</td></tr>
+</tbody></table>
+<p>所以尺子1 的口语化只做一件事：<strong>规则型下限筛除</strong>。</p>
+<pre><code>
+# 规则打分：书面标记 / 口语标记 / 平均句长 / 书面判定率
+python3 tools/style_check.py --pred predictions/&lt;model&gt;__public.jsonl
+
+# 加口语语料参照（先从 CDial-GPT 导出 lccc.txt，每行一句）
+python3 tools/style_check.py --pred predictions/&lt;model&gt;__public.jsonl --lccc /path/to/lccc.txt
+</code></pre>
+<p>输出与门槛：</p>
+<table><thead><tr><th>指标</th><th>含义</th><th>门槛</th></tr></thead><tbody>
+<tr><td>口语均分</td><td>−1 最书面，+1 最口语</td><td>—（排序用）</td></tr>
+<tr><td><strong>书面判定率</strong></td><td>分数 &lt; 0 的样本占比</td><td><strong>&gt; 10% 淘汰</strong></td></tr>
+<tr><td>LCCC 似然</td><td>与口语语料 2-gram 的平均对数似然</td><td>—（参考）</td></tr>
+</tbody></table>
+<p>实测区分度（同一批 240 条）：口语化输出 +0.40 / 0.0%；书面化输出 −0.32 / 31.7%。</p>
+<p>&gt; 这一轴的上限很低：它只能识别&quot;明显像说明书&quot;的输出，判不了&quot;自然不自然&quot;。真正的口语化定选在尺子2 的 B 轴。</p>
 <h2>7. 结果汇总表（统一格式）</h2>
 <p>每个模型跑完后，把官方分填进这张表（放在 <code>reports/public__&lt;model&gt;.md</code>）：</p>
 <table><thead><tr><th>指标</th><th>数值</th><th>门槛</th><th>是否过线</th></tr></thead><tbody>
@@ -119,6 +146,7 @@ python3 instruction_following_eval/run_eval.py \
 <tr><td>τ² retail / airline / telecom</td><td>—</td><td>平均 ≥40%</td><td>—</td></tr>
 <tr><td>ACEBench</td><td>—</td><td>≥70%</td><td>—</td></tr>
 <tr><td>IFEval strict</td><td>—</td><td>≥80%</td><td>—</td></tr>
+<tr><td>口语书面判定率</td><td>—</td><td>≤10%</td><td>—</td></tr>
 <tr><td>HaluEval-zh 承认率</td><td>—</td><td>≥60%</td><td>—</td></tr>
 <tr><td>CMMLU</td><td>—</td><td>≥65%</td><td>—</td></tr>
 <tr><td>结论</td><td>淘汰 / 进尺子2</td><td>—</td><td>—</td></tr>
@@ -130,5 +158,6 @@ python3 instruction_following_eval/run_eval.py \
 <table><thead><tr><th>坑</th><th>表现</th><th>处理</th></tr></thead><tbody>
 <tr><td>把 JSONL 当 JSON 读</td><td><code>Extra data: line 2 column 1</code></td><td>逐行 <code>json.loads</code>（脚本已处理）</td></tr>
 <tr><td>拿 gold 单值比对</td><td>全错，但模型其实对</td><td>BFCL gold 是&quot;可接受值集合&quot;，必须走官方 AST</td></tr>
+<tr><td>本地跑多轮</td><td>工具列表为空，模型无从调用</td><td>多轮的工具定义在 <code>involved_classes</code> 里（类名→文件不是 1:1），本地跳过，交官方 harness</td></tr>
 <tr><td>用我们的 score.py 出正式分</td><td>分数偏低且不可对外</td><td>正式分只认官方 harness；我们的脚本只做抽样与冒烟</td></tr>
 </tbody></table></body></html>

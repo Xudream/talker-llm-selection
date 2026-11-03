@@ -34,6 +34,9 @@ hr{border:none;border-top:1px solid #e5e7eb;margin:26px 0}
 <tr><td>A 工具</td><td><strong>τ²-bench</strong>（retail / airline / telecom）</td><td>多轮闭环、双控（用户/系统）</td><td>两步闭环保守估计</td><td>领域是客服，不贴家居</td></tr>
 <tr><td>A 工具</td><td><strong>ACEBench</strong>（中文工具调用）</td><td>中文说法 → 工具</td><td>中文场景对照</td><td>规模小</td></tr>
 <tr><td>B 约束</td><td><strong>IFEval</strong></td><td>25 类可验证约束</td><td>格式/长度底线</td><td>不含&quot;口语化&quot;</td></tr>
+<tr><td>B&#x27; 口语</td><td><strong>VoiceBench</strong></td><td>语音提问 → 回答质量（47 模型榜）</td><td>语音场景输入理解</td><td>判<strong>内容</strong>不判<strong>风格</strong></td></tr>
+<tr><td>B&#x27; 口语</td><td><strong>LCCC / CDial-GPT</strong>（thu-coai）</td><td>中文口语对话语料</td><td>口语风格参照（n-gram 似然）</td><td>语料是 2020 年短视频评论，较随意</td></tr>
+<tr><td>B&#x27; 口语</td><td><strong>规则检查器</strong>（本仓库 <code>tools/style_check.py</code>）</td><td>书面特征密度 / 口语标记密度 / 句长</td><td><strong>唯一能直接判&quot;说得像不像人话&quot;</strong></td><td>规则覆盖有限，需人工校准</td></tr>
 <tr><td>C 事实</td><td><strong>HaluEval 中文子集 / SimpleQA 类</strong></td><td>幻觉倾向</td><td>反向筛除</td><td>与家居事实不同分布</td></tr>
 <tr><td>C 常识</td><td><strong>CMMLU / C-Eval</strong>（抽样）</td><td>中文常识</td><td>闲聊兜底能力</td><td>与工具无关</td></tr>
 <tr><td>D 多轮</td><td>BFCL multi-turn + τ²</td><td>指代与槽位继承</td><td>组合判断</td><td>无&quot;设备上下文&quot;</td></tr>
@@ -59,7 +62,21 @@ hr{border:none;border-top:1px solid #e5e7eb;margin:26px 0}
 <tr><td>幻觉&quot;该拒未拒&quot;率</td><td>≤ 15%</td></tr>
 </tbody></table>
 <p>&gt; 门槛偏低是有意的：公开集分布不贴业务，够用来剔除&quot;根本不行&quot;的候选即可，真正的及格线在尺子2。</p>
-<h3>2.4 摸高轨怎么用</h3>
+<h3>2.4 口语化：公开集的能力边界（重要）</h3>
+<p><strong>结论：现成的公开集里没有&quot;口语化输出&quot;评测。</strong> 三个已核查的事实：</p>
+<ol><li>BFCL / τ² / ACEBench / IFEval 全部只判&quot;工具对不对、约束守不守&quot;，不判&quot;这句话能不能念出来&quot;</li><li><strong>VoiceBench</strong>（TACL 2026，47 个模型）测的是&quot;语音提问后回答得对不对&quot;，判的是内容质量；它不会因为你答得像说明书而扣分</li><li>真正对口的 LCCC / CDial-GPT 是<strong>语料</strong>不是评测集——只能当&quot;口语风格的参照分布&quot;，没有 gold 答案</li></ol>
+<p>因此尺子1 对口语化只能做两件事：</p>
+<table><thead><tr><th>做法</th><th>产出</th><th>用途</th></tr></thead><tbody>
+<tr><td>规则检查器（<code>tools/style_check.py</code>）</td><td>书面标记命中、口语标记命中、平均句长、书面判定率</td><td><strong>下限筛除</strong>：书面判定率 &gt; 10% 直接淘汰</td></tr>
+<tr><td>LCCC 2-gram 似然</td><td>与口语语料的平均对数似然</td><td>横向排序参考，不设门槛</td></tr>
+</tbody></table>
+<p>实测区分度（同一批 240 条）：</p>
+<table><thead><tr><th>输入</th><th>口语均分</th><th>书面判定率</th></tr></thead><tbody>
+<tr><td>口语化输出（&quot;好的，18，23。&quot;）</td><td>+0.40</td><td>0.0%</td></tr>
+<tr><td>书面化输出（&quot;<strong>根据查询结果</strong>：为您找到以下内容（详见下方）…&quot;）</td><td>−0.32</td><td>31.7%</td></tr>
+</tbody></table>
+<p><strong>真正的口语化定选在尺子2 的 B 轴</strong>（首句 ≤15 字、禁 markdown/列表/括号、数字读法），因为只有业务语料能定义&quot;我们的用户觉得自然&quot;。</p>
+<h3>2.5 摸高轨怎么用</h3>
 <p>闭源 SOTA（Claude Opus 5 / GPT-6.x / Gemini / Doubao Pro / Qwen Max）跑同一套尺子1 + 尺子2 的 200 条抽样，得到&quot;上限线&quot;：</p>
 <pre><code>
 差距 = 上限线分数 − 最好的开源候选分数
