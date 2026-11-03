@@ -74,7 +74,8 @@ def norm_turns(q):
 
 
 def parse_gold(gt):
-    """ground_truth 形如 [{"func": {"a": 1}}] 或 ["func(a=1)"]；无法解析则返回 None。"""
+    """ground_truth 形如 [{"func": {"a": 1}}] 或 ["func(a=1)"]。
+    含字符串形式/嵌套列表（多轮）时返回 None —— 一律交给官方 AST 判分。"""
     if not gt:
         return {"abstain": True}
     if isinstance(gt, str):
@@ -84,8 +85,8 @@ def parse_gold(gt):
         if isinstance(item, dict):
             for name, args in item.items():
                 calls.append({"name": name, "args": args if isinstance(args, dict) else {}})
-        elif isinstance(item, str):
-            return None  # 字符串形式交给官方 harness 判
+        elif isinstance(item, (str, list)):
+            return None  # 字符串/嵌套列表形式交给官方 harness 判
     if not calls:
         return {"abstain": True}
     return {"tool_calls": calls} if len(calls) > 1 else {"tool_call": calls[0]}
@@ -120,13 +121,22 @@ def main():
             if taken >= a.per_file:
                 break
             gold = parse_gold(answers.get(it["id"]))
+            if "multi_turn" in fname:
+                # 多轮只有官方 AST 能判；gold 留空，靠 official_answer 回填
+                gold = {} if answers.get(it["id"]) else {"abstain": True}
             if gold is None:
                 skipped += 1
                 continue
-            tools = []
-            for fn in (it.get("function") or []):
-                if isinstance(fn, dict) and fn.get("name"):
-                    tools.append(fn["name"])
+            def _names(x):
+                if isinstance(x, dict):
+                    return [x["name"]] if x.get("name") else []
+                if isinstance(x, list):
+                    out = []
+                    for y in x:
+                        out += _names(y)
+                    return out
+                return []
+            tools = _names(it.get("function") or [])
             raw_gt = answers.get(it["id"])
             score_by = "local" if "irrelevance" in fname else "official"
             rows.append({
@@ -138,7 +148,11 @@ def main():
                 "gold": {**gold, "official_answer": raw_gt},
                 "score_by": score_by,
                 "constraints": {},          # 公开集不适用口语约束
-                "meta": {"source": "public", "desc": desc, "schema": it.get("function") or []},
+                "meta": {"source": "public", "desc": desc,
+                         "schema": it.get("function") or [],
+                         "involved_classes": it.get("involved_classes"),
+                         # 多轮的工具有些以 class 形式给出（involved_classes），本地跑不了
+                         "run_local": "multi_turn" not in fname},
             })
             taken += 1
         print(f"  {fname}: 取 {taken} 条")

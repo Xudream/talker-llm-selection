@@ -56,7 +56,7 @@ python3 tools/score.py --taskset tasksets/L1.jsonl \
 ```
 docs/        洞察 / 评测体系 / 执行手册
 tools/       build_taskset.py  run_model.py  score.py  fetch_public_sets.py
-tasksets/    home_L0/L1、phone_L0/L1、合并 L0/L1、public_bfcl_v4（750 条）
+tasksets/    home_L0/L1、phone_L0/L1、合并 L0/L1、public_bfcl_v4（750 条：本地 600 + 官方 harness 150）
 predictions/ 模型输出 + 两个自检夹具
 reports/     判分报告
 ```

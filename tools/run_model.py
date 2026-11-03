@@ -120,6 +120,8 @@ def main():
     ap.add_argument("--model", default="qwen-plus")
     ap.add_argument("--api-key", default=None)
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--include-nonofficial", action="store_true",
+                    help="也跑 meta.run_local=false 的题（多轮公开集需要官方 harness 提供工具类）")
     ap.add_argument("--timeout", type=int, default=60)
     ap.add_argument("--sleep", type=float, default=0.0)
     a = ap.parse_args()
@@ -129,6 +131,12 @@ def main():
         sys.exit("缺少 API key（--api-key 或 DASHSCOPE_API_KEY / OPENAI_API_KEY）")
 
     rows = [json.loads(l) for l in open(a.taskset, encoding="utf-8") if l.strip()]
+    n_all = len(rows)
+    if not a.include_nonofficial:
+        rows = [r for r in rows if (r.get("meta") or {}).get("run_local", True)]
+        if len(rows) != n_all:
+            print(f"[skip] {n_all - len(rows)} 条需要官方 harness（多轮公开集），"
+                  f"本地只跑 {len(rows)} 条")
     if a.limit:
         rows = rows[:a.limit]
     os.makedirs(os.path.dirname(a.out) or ".", exist_ok=True)
